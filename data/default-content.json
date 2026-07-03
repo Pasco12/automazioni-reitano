@@ -1,0 +1,539 @@
+{
+  "seo": {
+    "title": "Reitano Automazioni Industriali & Service | PLC, quadri elettrici e automazione",
+    "description": "Programmazione PLC, quadri elettrici, impianti industriali, automazione, service e revamping per aziende e macchine automatiche."
+  },
+  "brand": {
+    "name": "Reitano Automazioni Industriali & Service",
+    "shortName": "REITANO",
+    "tagline": "Impianti elettrici, PLC & automazione industriale",
+    "description": "Programmazione PLC, impianti elettrici, quadri elettrici, automazione industriale e rifacimenti completi. Professionalità e competenza al tuo servizio.",
+    "logoUrl": "/logo-brand.png"
+  },
+  "contact": {
+    "phone": "+39 351 912 5291",
+    "whatsapp": "+39 351 912 5291",
+    "email": "reitanopasquale12@gmail.com",
+    "address": "Via da modificare, 1",
+    "city": "Città, Provincia",
+    "vat": "P.IVA da inserire",
+    "hours": "Lun - Ven / 08:00 - 18:00",
+    "googleMapsUrl": "https://maps.google.com/",
+    "facebook": "",
+    "instagram": "https://www.instagram.com/reitanoautomazioni/",
+    "linkedin": "",
+    "whatsappIconUrl": "/whatsapp.svg"
+  },
+  "hero": {
+    "kicker": "Disponibile per interventi",
+    "title": "Reitano Automazioni",
+    "subtitle": "Programmazione PLC, impianti elettrici, quadri elettrici, automazione industriale e rifacimenti completi. Soluzioni ordinate, sicure e pensate per far lavorare meglio il tuo impianto.",
+    "primaryCta": "Richiedi Preventivo",
+    "secondaryCta": "Chiama ora"
+  },
+  "sections": {
+    "servicesKicker": "Servizi",
+    "servicesTitle": "Cosa facciamo",
+    "servicesText": "Dalla programmazione PLC alla realizzazione di quadri elettrici: un supporto completo per impianti e macchine industriali.",
+    "aboutKicker": "Chi siamo",
+    "aboutTitle": "Passione e competenza al servizio del cliente",
+    "aboutText": "Ogni progetto viene seguito con cura e attenzione ai dettagli, con lavori ordinati, materiali adatti e soluzioni pensate per durare. Operiamo su automazione, quadri elettrici, diagnostica, revamping e manutenzione.",
+    "processKicker": "Processo",
+    "processTitle": "Come lavoriamo",
+    "processText": "Un metodo semplice: ascolto, sopralluogo, preventivo e realizzazione con test finale.",
+    "worksKicker": "Portfolio",
+    "worksTitle": "Lavori recenti",
+    "worksText": "Clicca sulle immagini dei lavori per aprire una pagina dedicata con dettagli, descrizione tecnica e gallery aggiuntiva.",
+    "reviewsKicker": "Recensioni",
+    "reviewsTitle": "Dicono di noi",
+    "reviewsText": "Feedback generici modificabili dal pannello admin tramite JSON avanzato.",
+    "quoteKicker": "Preventivo",
+    "quoteTitle": "Parliamone",
+    "quoteText": "Contattaci per un preventivo gratuito e senza impegno. Rispondiamo rapidamente.",
+    "contactKicker": "Contatti",
+    "contactTitle": "Parliamone",
+    "contactText": "Per assistenza, sopralluoghi, modifiche o nuovi quadri puoi scrivere dal form, chiamare o usare WhatsApp.",
+    "order": "servizi,chi-siamo,metodo,lavori,recensioni,contatti"
+  },
+  "stats": [
+    {
+      "value": "PLC",
+      "label": "Programmazione e diagnostica"
+    },
+    {
+      "value": "Quadri",
+      "label": "Cablaggio e revamping"
+    },
+    {
+      "value": "Service",
+      "label": "Interventi e manutenzione"
+    }
+  ],
+  "services": [
+    {
+      "icon": "plc",
+      "title": "Programmazione PLC",
+      "description": "Programmazione e riprogrammazione di controllori logici per automazione industriale, diagnostica e ottimizzazione.",
+      "bullets": [
+        "Logiche macchina e sequenze",
+        "HMI e pannelli operatore",
+        "Debug e ottimizzazione",
+        "Messa in servizio"
+      ]
+    },
+    {
+      "icon": "electric",
+      "title": "Impianti Elettrici",
+      "description": "Installazione, manutenzione e adeguamento di impianti elettrici industriali e bordo macchina.",
+      "bullets": [
+        "Impianti industriali",
+        "Adeguamenti tecnici",
+        "Manutenzione preventiva",
+        "Verifiche funzionali"
+      ]
+    },
+    {
+      "icon": "panel",
+      "title": "Quadri Elettrici",
+      "description": "Costruzione, cablaggio, modifica e collaudo di quadri elettrici di automazione, comando e distribuzione.",
+      "bullets": [
+        "Quadri di automazione",
+        "Quadri di comando",
+        "Cablaggio e collaudo",
+        "Morsettiere ordinate"
+      ]
+    },
+    {
+      "icon": "revamp",
+      "title": "Rifacimenti e Revamping",
+      "description": "Rifacimento di impianti e quadri esistenti, aggiornamento componenti e miglioramento dell’affidabilità.",
+      "bullets": [
+        "Rifacimento totale",
+        "Aggiornamento componenti",
+        "Messa in ordine cablaggi",
+        "Riduzione fermi macchina"
+      ]
+    },
+    {
+      "icon": "repair",
+      "title": "Diagnostica e Riparazioni",
+      "description": "Ricerca guasti su schede, inverter, azionamenti, alimentatori e componentistica industriale.",
+      "bullets": [
+        "Diagnosi guasti",
+        "Inverter e azionamenti",
+        "Schede elettroniche",
+        "Ripristino funzionale"
+      ]
+    },
+    {
+      "icon": "automation",
+      "title": "Automazione Industriale",
+      "description": "Soluzioni complete con sensori, attuatori, HMI, reti industriali e integrazione di sistemi.",
+      "bullets": [
+        "Sensori e attuatori",
+        "Sistemi HMI/SCADA",
+        "Reti industriali",
+        "Integrazione sistemi"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Quadro automazione con inverter",
+      "category": "Quadri elettrici",
+      "description": "Realizzazione e cablaggio di quadro per gestione macchina con inverter, protezioni e moduli di comando.",
+      "image": "/uploads/lavori/lavoro-1.jpg",
+      "bullets": [
+        "Cablaggio bordo quadro",
+        "Inverter e alimentazione",
+        "Test funzionali"
+      ],
+      "slug": "quadro-automazione-con-inverter",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Realizzazione e cablaggio di quadro per gestione macchina con inverter, protezioni e moduli di comando. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Diagnostica contattori e comandi",
+      "category": "Service",
+      "description": "Verifica di contattori, morsettiere e collegamenti per individuare anomalie e ripristinare il corretto funzionamento.",
+      "image": "/uploads/lavori/lavoro-2.jpg",
+      "bullets": [
+        "Controllo collegamenti",
+        "Ricerca guasto",
+        "Ripristino operativo"
+      ],
+      "slug": "diagnostica-contattori-e-comandi",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Verifica di contattori, morsettiere e collegamenti per individuare anomalie e ripristinare il corretto funzionamento. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Scheda elettronica di controllo",
+      "category": "Elettronica",
+      "description": "Installazione e collegamento di scheda di controllo per acquisizione segnali e gestione I/O di processo.",
+      "image": "/uploads/lavori/lavoro-3.jpg",
+      "bullets": [
+        "Ingressi e uscite",
+        "Taratura segnale",
+        "Collaudo"
+      ],
+      "slug": "scheda-elettronica-di-controllo",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Installazione e collegamento di scheda di controllo per acquisizione segnali e gestione I/O di processo. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Interfaccia HMI operatore",
+      "category": "HMI",
+      "description": "Gestione e configurazione di schermate operatore per controllo macchina, parametri, allarmi e funzioni principali.",
+      "image": "/uploads/lavori/lavoro-4.jpg",
+      "bullets": [
+        "Pagine operatore",
+        "Parametri macchina",
+        "Allarmi e comandi"
+      ],
+      "slug": "interfaccia-hmi-operatore",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Gestione e configurazione di schermate operatore per controllo macchina, parametri, allarmi e funzioni principali. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Automazione macchina vibrante",
+      "category": "Automazione",
+      "description": "Impianto di automazione per macchina industriale con quadro comandi, sensori e gestione del ciclo di lavoro.",
+      "image": "/uploads/lavori/lavoro-5.jpg",
+      "bullets": [
+        "Quadro comandi",
+        "Gestione ciclo",
+        "Avviamento macchina"
+      ],
+      "slug": "automazione-macchina-vibrante",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Impianto di automazione per macchina industriale con quadro comandi, sensori e gestione del ciclo di lavoro. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Analisi tecnica e dimensionamento",
+      "category": "Progettazione",
+      "description": "Studio preliminare di funzionamento e dimensionamento per supportare lo sviluppo della soluzione tecnica.",
+      "image": "/uploads/lavori/lavoro-6.jpg",
+      "bullets": [
+        "Analisi problema",
+        "Calcolo tecnico",
+        "Soluzione applicativa"
+      ],
+      "slug": "analisi-tecnica-e-dimensionamento",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Studio preliminare di funzionamento e dimensionamento per supportare lo sviluppo della soluzione tecnica. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Studio vibrazioni e controllo",
+      "category": "Progettazione",
+      "description": "Approfondimento tecnico su frequenze, vibrazioni e comportamento dinamico per ottimizzare il controllo macchina.",
+      "image": "/uploads/lavori/lavoro-7.jpg",
+      "bullets": [
+        "Studio dinamico",
+        "Verifica parametri",
+        "Ottimizzazione controllo"
+      ],
+      "slug": "studio-vibrazioni-e-controllo",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Approfondimento tecnico su frequenze, vibrazioni e comportamento dinamico per ottimizzare il controllo macchina. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Schema funzionale impianto",
+      "category": "Layout tecnico",
+      "description": "Schema concettuale di macchina con quadro elettrico, estrattore, portasacco e postazione di pesatura.",
+      "image": "/uploads/lavori/lavoro-8.jpg",
+      "bullets": [
+        "Schema macchina",
+        "Logica impianto",
+        "Supporto alla realizzazione"
+      ],
+      "slug": "schema-funzionale-impianto",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Schema concettuale di macchina con quadro elettrico, estrattore, portasacco e postazione di pesatura. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Manutenzione quadro esistente",
+      "category": "Service",
+      "description": "Intervento su quadro elettrico esistente con controllo cablaggi, componenti e condizioni generali dell'impianto.",
+      "image": "/uploads/lavori/lavoro-9.jpg",
+      "bullets": [
+        "Verifica sicurezza",
+        "Controllo relè e protezioni",
+        "Riordino collegamenti"
+      ],
+      "slug": "manutenzione-quadro-esistente",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Intervento su quadro elettrico esistente con controllo cablaggi, componenti e condizioni generali dell'impianto. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Quadro comando impianto industriale",
+      "category": "Quadri elettrici",
+      "description": "Quadro di automazione con sezioni di potenza e controllo per gestione di utenze, motori e segnali macchina.",
+      "image": "/uploads/lavori/lavoro-10.jpg",
+      "bullets": [
+        "Sezione potenza",
+        "Sezione ausiliaria",
+        "Morsettiere etichettate"
+      ],
+      "slug": "quadro-comando-impianto-industriale",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Quadro di automazione con sezioni di potenza e controllo per gestione di utenze, motori e segnali macchina. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Linea automatizzata in officina",
+      "category": "Automazione",
+      "description": "Installazione e supporto tecnico su linea produttiva con quadro di comando, nastri, motori e organi di movimentazione.",
+      "image": "/uploads/lavori/lavoro-11.jpg",
+      "bullets": [
+        "Supporto installazione",
+        "Cablaggio macchina",
+        "Test ciclo"
+      ],
+      "slug": "linea-automatizzata-in-officina",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Installazione e supporto tecnico su linea produttiva con quadro di comando, nastri, motori e organi di movimentazione. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Quadro bordo macchina",
+      "category": "Bordo macchina",
+      "description": "Installazione quadro comandi su struttura macchina con pulsanti, HMI e dispositivi di emergenza.",
+      "image": "/uploads/lavori/lavoro-12.jpg",
+      "bullets": [
+        "Pulsanteria",
+        "HMI",
+        "Emergenza e comandi"
+      ],
+      "slug": "quadro-bordo-macchina",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Installazione quadro comandi su struttura macchina con pulsanti, HMI e dispositivi di emergenza. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Quadro gestione bruciatori e circolatori",
+      "category": "Quadri elettrici",
+      "description": "Cablaggio e manutenzione quadro per gestione utenze, relè, trasformatori, circolatori e comandi ausiliari.",
+      "image": "/uploads/lavori/lavoro-13.jpg",
+      "bullets": [
+        "Relè e protezioni",
+        "Alimentazioni ausiliarie",
+        "Gestione utenze"
+      ],
+      "slug": "quadro-gestione-bruciatori-e-circolatori",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Cablaggio e manutenzione quadro per gestione utenze, relè, trasformatori, circolatori e comandi ausiliari. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Revamping armadio automazione",
+      "category": "Revamping",
+      "description": "Intervento su armadio elettrico industriale con verifica componenti, collegamenti e dispositivi di controllo.",
+      "image": "/uploads/lavori/lavoro-15.jpg",
+      "bullets": [
+        "Verifica armadio",
+        "Aggiornamento componenti",
+        "Collaudo"
+      ],
+      "slug": "revamping-armadio-automazione",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Intervento su armadio elettrico industriale con verifica componenti, collegamenti e dispositivi di controllo. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Automazione impianto in cantiere",
+      "category": "Impianti",
+      "description": "Supporto elettrico e automazione per impianto tecnico in ambiente esterno con sistemi di controllo e alimentazione.",
+      "image": "/uploads/lavori/lavoro-16.jpg",
+      "bullets": [
+        "Impianto esterno",
+        "Quadri e controllo",
+        "Assistenza tecnica"
+      ],
+      "slug": "automazione-impianto-in-cantiere",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Supporto elettrico e automazione per impianto tecnico in ambiente esterno con sistemi di controllo e alimentazione. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Diagnostica quadro PLC e azionamenti",
+      "category": "PLC",
+      "description": "Controllo quadro macchina con PLC, relè, azionamenti e collegamenti di segnale per attività di diagnostica e service.",
+      "image": "/uploads/lavori/lavoro-17.jpg",
+      "bullets": [
+        "PLC e I/O",
+        "Azionamenti",
+        "Diagnostica guasti"
+      ],
+      "slug": "diagnostica-quadro-plc-e-azionamenti",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Controllo quadro macchina con PLC, relè, azionamenti e collegamenti di segnale per attività di diagnostica e service. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Impianto industriale con nastri e protezioni",
+      "category": "Automazione",
+      "description": "Supporto su impianto industriale completo con movimentazioni, protezioni perimetrali e sistemi di comando.",
+      "image": "/uploads/lavori/lavoro-18.jpg",
+      "bullets": [
+        "Movimentazione",
+        "Sicurezze",
+        "Controllo macchina"
+      ],
+      "slug": "impianto-industriale-con-nastri-e-protezioni",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Supporto su impianto industriale completo con movimentazioni, protezioni perimetrali e sistemi di comando. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "PLC Omron e collegamenti I/O",
+      "category": "PLC",
+      "description": "Verifica di controllore programmabile, morsettiere e segnali per manutenzione e aggiornamento del sistema.",
+      "image": "/uploads/lavori/lavoro-19.jpg",
+      "bullets": [
+        "PLC Omron",
+        "Ingressi e uscite",
+        "Verifica segnali"
+      ],
+      "slug": "plc-omron-e-collegamenti-i-o",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Verifica di controllore programmabile, morsettiere e segnali per manutenzione e aggiornamento del sistema. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    },
+    {
+      "title": "Quadro elettromeccanico con contattori",
+      "category": "Quadri elettrici",
+      "description": "Controllo e manutenzione quadro con contattori, protezioni e morsettiere per gestione di utenze industriali.",
+      "image": "/uploads/lavori/lavoro-24.jpg",
+      "bullets": [
+        "Contattori",
+        "Protezioni",
+        "Morsettiere"
+      ],
+      "slug": "quadro-elettromeccanico-con-contattori",
+      "client": "Cliente industriale",
+      "location": "Italia",
+      "year": "Da modificare",
+      "detailedDescription": "Controllo e manutenzione quadro con contattori, protezioni e morsettiere per gestione di utenze industriali. L'attività comprende analisi iniziale, verifica dei componenti, cablaggio o configurazione dove necessario, test operativo e supporto alla messa in servizio.",
+      "gallery": []
+    }
+  ],
+  "process": [
+    {
+      "title": "Contatto",
+      "description": "Ci contatti telefonicamente, via WhatsApp o dal form per descrivere problema o necessità."
+    },
+    {
+      "title": "Sopralluogo",
+      "description": "Valutiamo impianto, quadro o macchina per capire le lavorazioni necessarie."
+    },
+    {
+      "title": "Preventivo",
+      "description": "Prepariamo una proposta chiara con attività, priorità, tempi e modalità."
+    },
+    {
+      "title": "Realizzazione",
+      "description": "Eseguiamo il lavoro con test funzionali, ordine e attenzione al risultato finale."
+    }
+  ],
+  "about": {
+    "title": "Passione e competenza al servizio del cliente",
+    "text": "Ogni progetto viene seguito con cura e attenzione ai dettagli, con lavori ordinati, materiali adatti e soluzioni pensate per durare. Operiamo su automazione, quadri elettrici, diagnostica, revamping e manutenzione.",
+    "features": [
+      {
+        "title": "Sicurezza garantita",
+        "description": "Interventi eseguiti con attenzione a protezioni, ordine e normativa."
+      },
+      {
+        "title": "Interventi rapidi",
+        "description": "Supporto concreto per guasti, modifiche e fermi macchina."
+      },
+      {
+        "title": "Esperienza tecnica",
+        "description": "Soluzioni pratiche su quadri, PLC, automazione e service."
+      },
+      {
+        "title": "Assistenza dedicata",
+        "description": "Supporto prima, durante e dopo l’intervento."
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "name": "Marco R.",
+      "role": "Responsabile stabilimento",
+      "text": "Professionista serio e competente. Intervento rapido su automazione e quadro macchina, con produzione ripresa senza intoppi."
+    },
+    {
+      "name": "Giuseppe M.",
+      "role": "Titolare azienda",
+      "text": "Quadro elettrico sistemato con ordine e precisione. Lavoro pulito, spiegazioni chiare e tempi rispettati."
+    },
+    {
+      "name": "Salvatore P.",
+      "role": "Responsabile tecnico",
+      "text": "Disponibile e risolutivo su guasto urgente. Diagnosi precisa e ripristino dell’impianto in tempi brevi."
+    }
+  ],
+  "theme": {
+    "homeBgColor": "#ffffff",
+    "surfaceColor": "#ffffff",
+    "accentColor": "#111111",
+    "headingColor": "#111111",
+    "textColor": "#424242",
+    "fontFamily": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "baseFontSize": "16px",
+    "navFontSize": "16px",
+    "heroTitleSize": "clamp(38px, 5.2vw, 72px)",
+    "sectionTitleSize": "clamp(30px, 4.2vw, 54px)",
+    "heading3Size": "22px",
+    "cardTitleSize": "21px",
+    "homeBgImage": "/home-background.png",
+    "heroOverlayOpacity": "0.84",
+    "heroImageOpacity": "0.14"
+  }
+}

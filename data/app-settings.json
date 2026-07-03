@@ -1,0 +1,23 @@
+{
+  "paymentMethods": [
+    {
+      "id": "pm-bank-transfer",
+      "name": "Bonifico bancario",
+      "type": "bank_transfer",
+      "details": "IBAN da inserire - Intestatario Reitano Automazioni",
+      "enabled": true
+    },
+    {
+      "id": "pm-onsite",
+      "name": "Pagamento alla consegna/intervento",
+      "type": "onsite",
+      "details": "Contanti, assegno o accordi diretti in fase di intervento.",
+      "enabled": true
+    }
+  ],
+  "version": {
+    "app": "1.0.0",
+    "releasedAt": "2026-06-25T08:59:54.130Z",
+    "notes": "Versione iniziale app con sito, area clienti, gestionale, quadri e realtime"
+  }
+}
