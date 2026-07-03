@@ -1,0 +1,405 @@
+RIEPILOGO MODIFICHE - VERSIONE AGGIORNATA SITO REITANO
+=====================================================
+
+Data riepilogo: 2026-07-02
+Progetto: Reitano Automazioni Industriali & Service
+Cartella progetto: Reitano
+
+
+1. SITO VETRINA PUBBLICO
+------------------------
+- Aggiornato e rifinito il sito vetrina pubblico.
+- Integrato il nuovo logo fornito dal file Drive:
+  public/logo-brand.png
+- Integrato sfondo circuito elettronico fornito dal file Drive:
+  public/home-background.png
+- Configurata la home page per poter usare un'immagine di sfondo personalizzabile.
+- Migliorati colori, card, bottoni, ombre, spaziature e resa generale.
+- Ripristinato il link “Lavori” nella navbar principale.
+- Uniformata la navbar nelle pagine dettaglio lavori alla navbar della home.
+- Rimossi dalla navbar pubblica:
+  - Privacy e cookie
+  - Area clienti
+  - link admin/local-admin
+- Spostati nel footer:
+  - Privacy e cookie
+  - Area clienti
+- Rimosso qualsiasi riferimento pubblico a dati bancari dal sito vetrina.
+- Sistemata la visualizzazione dell'email lunga nei riquadri contatto.
+- Aggiunto pulsante flottante “Chiama” con numero corretto.
+- Aggiunto pulsante flottante WhatsApp con icona corretta.
+
+
+2. CONTATTI DEFINITIVI
+----------------------
+Sono stati impostati come dati principali:
+
+Telefono:
++39 351 912 5291
+
+WhatsApp:
++39 351 912 5291
+
+Email:
+reitanopasquale12@gmail.com
+
+Questi dati sono stati aggiornati in:
+- data/content.json
+- data/default-content.json
+- fallback frontend
+- link tel:
+- link mailto:
+- pulsanti di contatto
+- WhatsApp
+
+
+3. WHATSAPP E INSTAGRAM
+-----------------------
+Aggiunti file SVG:
+
+public/whatsapp.svg
+public/instagram.svg
+
+WhatsApp:
+- Il pulsante flottante usa /whatsapp.svg.
+- Il numero WhatsApp viene preso dal campo contact.whatsapp.
+- È possibile cambiare icona WhatsApp da pannello admin.
+
+Instagram:
+- Aggiunto collegamento Instagram configurabile.
+- Campo modificabile da admin:
+  Contenuti base > Contatti > Instagram URL
+- Icona Instagram disponibile in public/instagram.svg.
+
+
+4. FORM PREVENTIVO / CONTATTO
+-----------------------------
+- Dopo l'invio del form, il cliente ora vede solo:
+  “La tua richiesta è stata inoltrata.”
+- Rimosso dal lato cliente il messaggio tecnico:
+  “Richiesta salvata nel pannello admin”
+- Rimosso dal lato cliente il link:
+  “Apri WhatsApp con messaggio pronto”
+- Le richieste continuano a essere salvate nel backend.
+- Le richieste sono visibili in Local Admin > Richieste sito.
+- Se SMTP è configurato, le richieste vengono inviate via email.
+
+
+5. PRIVACY E COOKIE
+-------------------
+- Aggiunta pagina Privacy e Cookie Policy:
+  public/privacy.html
+- Aggiunto banner cookie reale:
+  public/js/cookie-consent.js
+- Il banner consente:
+  - Accetta tutti
+  - Rifiuta non necessari
+  - Preferenze
+- Categorie cookie:
+  - Tecnici necessari
+  - Funzionali
+  - Marketing/statistiche
+- Il consenso viene salvato nel cookie:
+  reitano_cookie_consent
+- Il checkbox privacy del form è stato reso più ordinato e leggibile.
+- Il testo è stato modificato in:
+  “Accetto la Privacy Policy e autorizzo il contatto per questa richiesta.”
+
+
+6. AREA CLIENTI / APP CLIENTI
+-----------------------------
+Percorso:
+/app
+
+Funzioni presenti:
+- Registrazione cliente.
+- Login cliente.
+- Login/registrazione con Google predisposti.
+- Recupero password tramite email o telefono.
+- Profilo cliente modificabile.
+- Cambio password cliente con email di conferma, se SMTP configurato.
+- Richiesta intervento.
+- Visualizzazione interventi.
+- Messaggi sugli interventi.
+- Fatture e scadenze.
+- Quadri elettrici associati al cliente.
+- Segnali, storico, andamento e comandi quadro.
+- Recensioni solo dopo intervento completato.
+- App installabile come PWA.
+
+
+7. GOOGLE LOGIN
+---------------
+Aggiunto logo Google:
+public/google.svg
+
+Aggiunto script di configurazione:
+scripts/configure-google.js
+
+Aggiunto comando:
+npm run config:google
+
+Esempio:
+npm run config:google -- CLIENT_ID_GOOGLE.apps.googleusercontent.com https://tuodominio.it
+
+Aggiunta guida:
+GOOGLE_LOGIN_SETUP.md
+
+Funzionamento:
+- Se GOOGLE_CLIENT_ID è configurato, compare il pulsante ufficiale Google.
+- Se non è configurato, il box Google viene nascosto e resta il login via email.
+- Il backend verifica il token Google lato server.
+
+
+8. LOCAL ADMIN / GESTIONALE
+---------------------------
+Percorso consigliato:
+/local-admin
+
+Percorso equivalente:
+/admin-app
+
+Funzioni presenti:
+- Dashboard gestionale.
+- Richieste sito.
+- Conversione richiesta in cliente + intervento.
+- Gestione clienti.
+- Gestione interventi/lavori.
+- Gestione quadri elettrici.
+- Gestione fatture.
+- Gestione scadenze e Ri.Ba.
+- Gestione metodi di pagamento.
+- Gestione recensioni.
+- Tabelle dati.
+- Statistiche.
+- Grafici interni senza librerie esterne.
+
+
+9. EDITOR SITO / ADMIN
+----------------------
+Percorso:
+/admin
+
+Funzioni presenti:
+- Modifica contenuti base.
+- Modifica colori.
+- Modifica font e dimensioni.
+- Modifica logo.
+- Modifica icona WhatsApp.
+- Modifica immagine sfondo home.
+- Modifica servizi.
+- Modifica lavori.
+- Caricamento più immagini per ogni lavoro.
+- Modifica testi sezioni.
+- Modifica ordine sezioni homepage.
+- Accesso al Local Admin.
+- Cambio password admin.
+- Configurazione 2FA.
+- Test SMTP email.
+- Reset tema.
+- Reset contenuti sito.
+- Esportazione contenuti JSON.
+
+
+10. SICUREZZA
+-------------
+Sono state aggiunte/mantenute le seguenti protezioni:
+- Password con hash PBKDF2.
+- Token firmati HMAC con scadenza.
+- 2FA TOTP per admin.
+- Rate limit su login e recupero password.
+- Header HTTP di sicurezza.
+- Validazione token Google lato backend.
+- Upload filtrato per tipo file.
+- API no-cache.
+- Nessun link admin nel sito pubblico.
+- Nessun dato bancario nel sito pubblico.
+- Admin non salvato in localStorage.
+- File security.json escluso dal pacchetto finale.
+
+Nota: nessun sito può essere considerato impenetrabile al 100%, ma il progetto è stato rinforzato e testato per una pubblicazione iniziale sicura.
+
+
+11. EMAIL E SMTP
+----------------
+Aggiunto supporto email per:
+- richieste preventivo/contatto;
+- registrazione cliente;
+- cambio password cliente;
+- recupero password cliente;
+- creazione cliente da admin;
+- cambio password admin;
+- promemoria fatture/scadenze.
+
+Aggiunto script test email:
+scripts/test-email.js
+
+Comando:
+npm run test:email
+
+Configurazione consigliata nel file .env:
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=reitanopasquale12@gmail.com
+SMTP_PASS=password-per-app-gmail
+MAIL_FROM="Reitano Automazioni <reitanopasquale12@gmail.com>"
+MAIL_TO=reitanopasquale12@gmail.com
+
+
+12. QUADRI ELETTRICI / IMPIANTI
+--------------------------------
+Aggiunta gestione quadri elettrici in area cliente e local admin.
+
+Funzioni:
+- Associazione quadro a cliente.
+- Associazione quadro a lavoro/intervento.
+- Stato quadro online/offline/manutenzione/allarme.
+- Stato potenza acceso/spento.
+- Segnali configurabili.
+- Storico segnali.
+- Mini grafico andamento.
+- Comandi software:
+  - Accendi
+  - Spegni
+  - Reset allarme
+
+Nota tecnica:
+Per comandare realmente un quadro fisico serve integrazione con gateway/PLC/API/MQTT. Il backend è predisposto per questa futura integrazione.
+
+
+13. RECENSIONI
+--------------
+- Il cliente può lasciare recensioni solo dopo intervento completato.
+- La recensione resta in stato pending.
+- L'admin approva o rifiuta da Local Admin > Recensioni.
+- Solo le recensioni approvate compaiono sul sito pubblico.
+
+
+14. DATABASE E DATI
+-------------------
+File dati principali:
+- data/content.json
+- data/default-content.json
+- data/clients.json
+- data/interventions.json
+- data/invoices.json
+- data/panels.json
+- data/leads.json
+- data/reviews.json
+- data/app-settings.json
+
+Con Node 24 può essere usato SQLite:
+- data/reitano.sqlite
+
+Per evitare problemi, content.json resta modificabile manualmente e ha priorità sui contenuti sito.
+
+
+15. DRIVE / COLLABORAZIONE
+--------------------------
+Aggiunti file per lavorare da Google Drive senza corrompere node_modules:
+
+setup-drive-windows.bat
+start-drive-windows.bat
+
+Questi file permettono di tenere il codice nel Drive ma salvare node_modules fuori dal Drive.
+
+
+16. TEST ESEGUITI
+-----------------
+Eseguiti controlli:
+
+node --check server.js
+node --check public/js/*.js
+node --check scripts/*.js
+npm audit --audit-level=high
+
+Risultato:
+0 vulnerabilità alte
+
+Test manuali effettuati:
+- Homepage.
+- Area clienti.
+- Admin.
+- Local Admin.
+- Privacy.
+- Pagina lavori.
+- Navbar home.
+- Navbar pagine lavoro.
+- Footer privacy/area clienti.
+- Pulsante chiama flottante.
+- Pulsante WhatsApp flottante.
+- Link telefono.
+- Link email.
+- Assenza link admin nel sito pubblico.
+- Assenza dati bancari nel sito pubblico.
+
+
+17. FILE IMPORTANTI AGGIUNTI
+----------------------------
+- public/whatsapp.svg
+- public/instagram.svg
+- public/google.svg
+- public/privacy.html
+- public/js/cookie-consent.js
+- public/logo-brand.png
+- public/home-background.png
+- GOOGLE_LOGIN_SETUP.md
+- GUIDA_MARKETING_ECONOMICO.md
+- TUTORIAL_AREA_CLIENTI.md
+- CODICE_SICUREZZA_EMAIL.md
+- RAPPORTO_BETA_TEST.md
+- RAPPORTO_SICUREZZA.md
+- setup-drive-windows.bat
+- start-drive-windows.bat
+- scripts/test-email.js
+- scripts/configure-google.js
+
+
+18. COMANDI PRINCIPALI
+----------------------
+Installazione:
+npm install
+
+Avvio:
+npm start
+
+Test email:
+npm run test:email
+
+Configurazione Google:
+npm run config:google -- CLIENT_ID_GOOGLE.apps.googleusercontent.com https://tuodominio.it
+
+Aggiornamento versione:
+npm run release:patch
+npm run release:minor
+npm run release:major
+
+
+19. PERCORSI PRINCIPALI
+-----------------------
+Sito pubblico:
+/
+
+Area clienti:
+/app
+
+Editor sito:
+/admin
+
+Local Admin:
+/local-admin
+
+Gestionale alternativo:
+/admin-app
+
+Privacy:
+/privacy.html
+
+
+20. STATO ATTUALE
+-----------------
+La versione aggiornata è pronta per test finale e pubblicazione.
+Il pacchetto generato è:
+
+Reitano-aggiornato.zip

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Admin | Reitano Automazioni</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" href="/favicon.svg?v=floating-google-v17" type="image/svg+xml">
+  <link rel="manifest" href="/manifest-admin.webmanifest">
+  <link rel="stylesheet" href="/css/app.css?v=floating-google-v17">
+</head>
+<body>
+  <main class="auth-screen" id="auth-screen">
+    <section class="auth-card">
+      <div class="auth-side">
+        <div><img src="/logo-brand.png" alt="Reitano"><h1>Local Admin</h1><p>Clienti, interventi, fatture, pagamenti, scadenze, richieste sito e stato lavori in un'unica app installabile.</p></div>
+        <div class="badges"><span class="badge">CRM</span><span class="badge">Interventi</span><span class="badge">Fatture</span></div>
+      </div>
+      <form class="auth-forms form" id="admin-login-form">
+        <h2 style="color:var(--ink);margin:0">Accesso amministratore</h2>
+        <label>Password admin<input type="password" name="password" required placeholder="Password admin"></label>
+        <label class="hidden" id="login-2fa-wrap">Codice 2FA<input type="text" name="code" inputmode="numeric" autocomplete="one-time-code" placeholder="000000"></label>
+        <button class="btn" type="submit">Entra</button>
+        <p class="result" id="login-result"></p>
+      </form>
+    </section>
+  </main>
+
+  <main class="app-shell hidden" id="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/">
+        <img src="/logo-brand.png" alt="Reitano Automazioni">
+        <span><strong>REITANO</strong><small>Local Admin</small></span>
+      </a>
+      <nav class="nav" aria-label="Gestionale admin">
+        <button class="active" data-tab="dashboard" type="button">Dashboard</button>
+        <button data-tab="requests" type="button">Richieste sito</button>
+        <button data-tab="interventions" type="button">Interventi</button>
+        <button data-tab="panels" type="button">Quadri</button>
+        <button data-tab="clients" type="button">Clienti</button>
+        <button data-tab="invoices" type="button">Fatture</button>
+        <button data-tab="deadlines" type="button">Scadenze</button>
+        <button data-tab="reviews" type="button">Recensioni</button>
+        <button data-tab="payments" type="button">Pagamenti</button>
+        <a href="/admin" target="_blank" rel="noopener">Lavori sito</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn soft install-tip" id="install-btn" type="button">Installa app</button>
+        <button class="btn soft" id="reload-btn" type="button">Aggiorna dati</button>
+        <button class="btn soft" id="logout-btn" type="button">Esci</button>
+      </div>
+    </aside>
+
+    <section class="main">
+      <header class="topbar">
+        <div><h1>Local Admin</h1><p>Richieste sito, clienti, interventi, fatture, pagamenti, scadenze e grafici.</p></div>
+        <div class="actions"><button class="btn" data-tab="interventions" type="button">Gestisci interventi</button><a class="btn soft" href="/admin" target="_blank">Editor sito</a></div>
+      </header>
+
+      <section class="panel active" id="panel-dashboard">
+        <div class="stats" id="stats"></div>
+        <div class="chart-grid" id="dashboard-charts"></div>
+        <div class="grid">
+          <article class="card"><h2>Interventi aperti</h2><div class="list" id="dashboard-interventions" style="margin-top:14px"></div></article>
+          <article class="card"><h2>Fatture non pagate</h2><div class="list" id="dashboard-invoices" style="margin-top:14px"></div></article>
+          <article class="card"><h2>Richieste dal sito</h2><div class="list" id="dashboard-leads" style="margin-top:14px"></div></article>
+          <article class="card"><h2>Scadenze pagamenti</h2><div class="list" id="dashboard-deadlines" style="margin-top:14px"></div></article>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-requests">
+        <article class="card">
+          <div class="card-head"><div><h2>Richieste dal sito</h2><p>Preventivi e contatti arrivati dai form del sito. Puoi convertirli in cliente + intervento.</p></div><button class="btn soft small" id="reload-leads-admin" type="button">Aggiorna</button></div>
+          <div class="list" id="leads-list"></div>
+        </article>
+      </section>
+
+      <section class="panel" id="panel-interventions">
+        <div class="grid">
+          <article class="card"><div class="card-head"><div><h2>Nuovo intervento</h2><p>Crea interventi per clienti già registrati.</p></div></div>
+            <form class="form" id="intervention-form">
+              <div class="form-grid"><label>Cliente<select name="clientId" id="intervention-client" required></select></label><label>Stato<select name="status"><option value="scheduled">Programmato</option><option value="requested">Richiesto</option><option value="in_progress">In lavorazione</option><option value="waiting_parts">In attesa materiali</option><option value="completed">Completato</option></select></label></div>
+              <div class="form-grid"><label>Titolo<input name="title" required placeholder="Intervento quadro elettrico"></label><label>Servizio<input name="service" placeholder="Quadri elettrici"></label></div>
+              <div class="form-grid"><label>Priorità<input name="priority" placeholder="Normale/Urgente"></label><label>Data programmata<input name="scheduledAt" type="datetime-local"></label></div>
+              <label>Luogo<input name="location" placeholder="Indirizzo/reparto"></label>
+              <label>Descrizione<textarea name="description" placeholder="Dettagli intervento"></textarea></label>
+              <label>Note pubbliche cliente<textarea name="publicNotes" placeholder="Visibili al cliente"></textarea></label>
+              <button class="btn" type="submit">Crea intervento</button><p class="result" id="intervention-result"></p>
+            </form>
+          </article>
+          <article class="card"><h2>Elenco interventi</h2><div class="table-list" id="interventions-list" style="margin-top:14px"></div></article>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-panels">
+        <div class="grid">
+          <article class="card"><h2>Nuovo quadro / impianto</h2><p>Collega un quadro al cliente, a un intervento o a un lavoro realizzato. I segnali sono modificabili e storicizzati.</p>
+            <form class="form" id="panel-form" style="margin-top:14px">
+              <div class="form-grid"><label>Cliente<select name="clientId" id="panel-client" required></select></label><label>Lavoro sito<select name="projectSlug" id="panel-project"><option value="">Nessuno</option></select></label></div>
+              <div class="form-grid"><label>Intervento<select name="interventionId" id="panel-intervention"><option value="">Nessuno</option></select></label><label>Nome quadro<input name="name" required placeholder="Quadro linea produzione"></label></div>
+              <div class="form-grid"><label>Codice quadro<input name="code" placeholder="Q-001"></label><label>Luogo<input name="location" placeholder="Reparto / indirizzo"></label></div>
+              <div class="form-grid"><label>Stato<select name="status"><option value="offline">Offline</option><option value="online">Online</option><option value="maintenance">Manutenzione</option><option value="alarm">Allarme</option></select></label><label>Stato potenza<select name="powerState"><option value="off">Spento</option><option value="on">Acceso</option></select></label></div>
+              <div class="form-grid"><label>Controllo remoto<select name="controlEnabled"><option value="true">Abilitato</option><option value="false">Non abilitato</option></select></label><label>Modalità controllo<select name="controlMode"><option value="manual">Manuale/app</option><option value="demo">Demo</option><option value="gateway">Gateway esterno</option></select></label></div>
+              <label>Descrizione<textarea name="description" placeholder="Descrizione quadro, impianto, PLC, note tecniche..."></textarea></label>
+              <label>Segnali iniziali<textarea name="signalsText" placeholder="Temperatura quadro|°C|32|0|45|ok\nAssorbimento|A|12|0|25|ok\nStato motore||OFF|||ok"></textarea></label>
+              <button class="btn" type="submit">Crea quadro</button><p class="result" id="panel-result"></p>
+            </form>
+          </article>
+          <article class="card"><div class="card-head"><div><h2>Quadri e andamento</h2><p>Stato, segnali, storico, allarmi e comandi.</p></div><button class="btn soft small" id="refresh-panels" type="button">Aggiorna</button></div><div class="table-list" id="panels-list"></div></article>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-clients">
+        <div class="grid">
+          <article class="card"><h2>Nuovo cliente</h2><form class="form" id="client-form" style="margin-top:14px"><div class="form-grid"><label>Nome<input name="name" required></label><label>Azienda<input name="company"></label></div><div class="form-grid"><label>Email<input name="email" type="email" required></label><label>Telefono<input name="phone"></label></div><label>Indirizzo<input name="address"></label><label>P.IVA / CF<input name="vat"></label><label>Password provvisoria<input name="password" placeholder="Lascia vuoto per generarla"></label><button class="btn" type="submit">Crea cliente</button><p class="result" id="client-result"></p></form></article>
+          <article class="card"><h2>Clienti</h2><div class="table-list" id="clients-list" style="margin-top:14px"></div></article>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-invoices">
+        <div class="grid">
+          <article class="card"><h2>Nuova fattura</h2><p>Formato righe: descrizione | quantità | prezzo unitario | IVA</p><form class="form" id="invoice-form" style="margin-top:14px"><div class="form-grid"><label>Cliente<select name="clientId" id="invoice-client" required></select></label><label>Intervento<select name="interventionId" id="invoice-intervention"><option value="">Nessuno</option></select></label></div><div class="form-grid"><label>Numero<input name="number" placeholder="Automatico"></label><label>Scadenza<input name="dueDate" type="date"></label></div><div class="form-grid"><label>Tipo pagamento<select name="paymentType"><option>Bonifico</option><option>Ri.Ba.</option><option>Contanti</option><option>Assegno</option><option>POS</option></select></label><label>Promemoria giorni<input name="reminderDays" value="7,3,0" placeholder="7,3,0"></label></div><label>Voci fattura<textarea name="itemsText" required placeholder="Intervento quadro elettrico | 1 | 250 | 22"></textarea></label><label>Metodo pagamento<select name="paymentMethodId" id="invoice-payment"></select></label><label>Note<textarea name="notes"></textarea></label><button class="btn" type="submit">Crea fattura</button><p class="result" id="invoice-result"></p></form></article>
+          <article class="card"><div class="card-head"><div><h2>Fatture</h2><p>Stato, importi e scadenze.</p></div><button class="btn soft small" onclick="window.print()" type="button">Stampa</button></div><div class="table-list" id="invoices-list"></div></article>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-deadlines">
+        <article class="card">
+          <div class="card-head"><div><h2>Scadenze e Ri.Ba.</h2><p>Fatture in scadenza, scadute e promemoria automatici tracciati.</p></div><button class="btn soft small" onclick="window.print()" type="button">Stampa scadenziario</button></div>
+          <div class="list" id="deadlines-list"></div>
+        </article>
+      </section>
+
+      <section class="panel" id="panel-reviews">
+        <article class="card">
+          <div class="card-head"><div><h2>Recensioni clienti</h2><p>Approva o rifiuta le recensioni prima che compaiano sul sito.</p></div><button class="btn soft small" id="reload-reviews" type="button">Aggiorna</button></div>
+          <div class="list" id="reviews-list"></div>
+        </article>
+      </section>
+
+      <section class="panel" id="panel-payments">
+        <div class="grid">
+          <article class="card"><h2>Metodo pagamento</h2><form class="form" id="payment-form" style="margin-top:14px"><div class="form-grid"><label>Nome<input name="name" required placeholder="Bonifico bancario"></label><label>Tipo<input name="type" placeholder="bank_transfer"></label></div><label>Dettagli<textarea name="details" placeholder="IBAN, intestatario, note..."></textarea></label><button class="btn" type="submit">Aggiungi metodo</button><p class="result" id="payment-result"></p></form></article>
+          <article class="card"><h2>Metodi configurati</h2><div class="list" id="payments-list" style="margin-top:14px"></div></article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/js/admin-app.js?v=floating-google-v17" defer></script>
+</body>
+</html>

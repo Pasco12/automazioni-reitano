@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Area Clienti | Reitano Automazioni</title>
+  <meta name="description" content="Area clienti per richieste interventi, gestione interventi, fatture e contatti.">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" href="/favicon.svg?v=floating-google-v17" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/app-icon-192.png">
+  <link rel="stylesheet" href="/css/app.css?v=floating-google-v17">
+</head>
+<body>
+  <main class="auth-screen" id="auth-screen">
+    <section class="auth-card">
+      <div class="auth-side">
+        <div>
+          <img src="/logo-brand.png" alt="Reitano Automazioni">
+          <h1>Area clienti</h1>
+          <p>Richiedi interventi, segui lo stato dei lavori, consulta fatture e parla direttamente con l’assistenza.</p>
+        </div>
+        <div class="badges">
+          <span class="badge">Installabile</span>
+          <span class="badge">Interventi</span>
+          <span class="badge">Fatture</span>
+        </div>
+      </div>
+      <div class="auth-forms">
+        <div class="auth-tabs">
+          <button class="active" data-auth-tab="login" type="button">Accedi</button>
+          <button data-auth-tab="register" type="button">Registrati</button>
+          <button data-auth-tab="reset" type="button">Recupera</button>
+        </div>
+        <form class="auth-form form active" id="login-form">
+          <div id="google-login-box" class="google-box"></div>
+          <div class="or-line"><span>oppure accedi con email</span></div>
+          <label>Email<input name="email" type="email" required placeholder="cliente@email.it"></label>
+          <label>Password<input name="password" type="password" required placeholder="Password"></label>
+          <button class="btn" type="submit">Entra nell'app</button>
+          <p class="result" id="login-result"></p>
+        </form>
+        <form class="auth-form form" id="reset-form">
+          <label>Email account<input name="email" type="email" placeholder="cliente@email.it"></label>
+          <label>Oppure telefono<input name="phone" placeholder="+39 ..."></label>
+          <button class="btn" type="submit">Invia recupero password</button>
+          <p class="result" id="reset-result"></p>
+          <hr style="border:0;border-top:1px solid var(--line);width:100%">
+          <label>Email<input name="confirmEmail" type="email" placeholder="cliente@email.it"></label>
+          <label>Codice ricevuto via email<input name="token" placeholder="Token recupero"></label>
+          <label>Nuova password<input name="newPassword" type="password" minlength="6"></label>
+          <button class="btn soft" id="confirm-reset-btn" type="button">Conferma nuova password</button>
+          <p class="result" id="confirm-reset-result"></p>
+        </form>
+        <form class="auth-form form" id="register-form">
+          <div id="google-login-box-register" class="google-box"></div>
+          <div class="or-line"><span>oppure registrati con email</span></div>
+          <div class="form-grid">
+            <label>Nome e cognome<input name="name" required placeholder="Mario Rossi"></label>
+            <label>Azienda<input name="company" placeholder="Nome azienda"></label>
+          </div>
+          <div class="form-grid">
+            <label>Email<input name="email" type="email" required placeholder="cliente@email.it"></label>
+            <label>Telefono<input name="phone" placeholder="+39 ..."></label>
+          </div>
+          <label>Password<input name="password" type="password" minlength="6" required placeholder="Minimo 6 caratteri"></label>
+          <button class="btn" type="submit">Crea account</button>
+          <p class="result" id="register-result"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <main class="app-shell hidden" id="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/">
+        <img src="/logo-brand.png" alt="Reitano Automazioni">
+        <span><strong>REITANO</strong><small>Area clienti</small></span>
+      </a>
+      <nav class="nav" aria-label="Area clienti">
+        <button class="active" data-tab="dashboard" type="button">Dashboard</button>
+        <button data-tab="interventions" type="button">Interventi</button>
+        <button data-tab="panels" type="button">Quadri</button>
+        <button data-tab="new" type="button">Nuova richiesta</button>
+        <button data-tab="invoices" type="button">Fatture</button>
+        <button data-tab="reviews" type="button">Recensioni</button>
+        <button data-tab="profile" type="button">Profilo</button>
+        <button data-tab="contact" type="button">Contatti</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn soft install-tip" id="install-btn" type="button">Installa app</button>
+        <button class="btn soft" id="logout-btn" type="button">Esci</button>
+      </div>
+    </aside>
+
+    <section class="main">
+      <header class="topbar">
+        <div><h1 id="welcome-title">Ciao</h1><p id="welcome-subtitle">Gestisci richieste, interventi e documenti.</p></div>
+        <div class="actions">
+          <button class="btn" data-go-new type="button">Nuovo intervento</button>
+          <a class="btn soft" id="quick-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </header>
+
+      <section class="panel active" id="panel-dashboard">
+        <div class="stats" id="stats"></div>
+        <div class="grid">
+          <article class="card"><div class="card-head"><div><h2>Prossimi interventi</h2><p>Le richieste aperte o programmate.</p></div><button class="btn soft small" data-tab="interventions" type="button">Vedi tutti</button></div><div class="list" id="next-interventions"></div></article>
+          <article class="card"><div class="card-head"><div><h2>Fatture da gestire</h2><p>Documenti aperti e metodi di pagamento.</p></div><button class="btn soft small" data-tab="invoices" type="button">Fatture</button></div><div class="list" id="due-invoices"></div></article>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-interventions">
+        <article class="card"><div class="card-head"><div><h2>I tuoi interventi</h2><p>Apri una scheda per messaggi, stato e dettagli.</p></div><button class="btn" data-go-new type="button">Nuova richiesta</button></div><div class="list" id="interventions-list"></div></article>
+      </section>
+
+      <section class="panel" id="panel-panels">
+        <article class="card">
+          <div class="card-head"><div><h2>Quadri e impianti</h2><p>Segnali, andamento storico, allarmi e comandi suddivisi per lavori realizzati.</p></div><button class="btn soft small" id="refresh-panels" type="button">Aggiorna</button></div>
+          <div class="list" id="panels-list"></div>
+        </article>
+      </section>
+
+      <section class="panel" id="panel-new">
+        <article class="card">
+          <h2>Richiedi intervento</h2>
+          <p>Descrivi il problema o il lavoro. La richiesta arriverà nel gestionale amministratore.</p>
+          <form class="form" id="request-form" style="margin-top:16px">
+            <div class="form-grid">
+              <label>Titolo richiesta<input name="title" required placeholder="Es. Guasto quadro macchina"></label>
+              <label>Servizio<select name="service" id="service-select"><option value="">Seleziona</option></select></label>
+            </div>
+            <div class="form-grid">
+              <label>Priorità<select name="priority"><option>Normale</option><option>Urgente</option><option>Programmata</option></select></label>
+              <label>Data preferita<input name="preferredDate" type="date"></label>
+            </div>
+            <label>Luogo intervento<input name="location" placeholder="Indirizzo o reparto"></label>
+            <label>Descrizione dettagliata<textarea name="description" required placeholder="Descrivi macchina, quadro, errore, urgenza, foto da inviare su WhatsApp..."></textarea></label>
+            <button class="btn" type="submit">Invia richiesta</button>
+            <p class="result" id="request-result"></p>
+          </form>
+        </article>
+      </section>
+
+      <section class="panel" id="panel-invoices">
+        <article class="card"><div class="card-head"><div><h2>Fatture e pagamenti</h2><p>Consulta documenti, importi, scadenze e modalità di pagamento.</p></div><button class="btn soft small" onclick="window.print()" type="button">Stampa</button></div><div class="list" id="invoices-list"></div><div class="card" style="margin-top:16px"><h3>Metodi di pagamento</h3><div class="list" id="payment-methods" style="margin-top:12px"></div></div></article>
+      </section>
+
+      <section class="panel" id="panel-reviews">
+        <article class="card">
+          <h2>Recensioni</h2>
+          <p>Puoi lasciare una recensione solo per interventi completati. Verrà pubblicata sul sito dopo approvazione.</p>
+          <form class="form" id="review-form" style="margin-top:16px">
+            <div class="form-grid">
+              <label>Intervento completato<select name="interventionId" id="review-intervention" required></select></label>
+              <label>Valutazione<select name="rating"><option value="5">5 stelle</option><option value="4">4 stelle</option><option value="3">3 stelle</option><option value="2">2 stelle</option><option value="1">1 stella</option></select></label>
+            </div>
+            <label>Recensione<textarea name="text" required placeholder="Racconta com'è andato il servizio..."></textarea></label>
+            <button class="btn" type="submit">Invia recensione</button>
+            <p class="result" id="review-result"></p>
+          </form>
+          <div class="list" id="client-reviews" style="margin-top:16px"></div>
+        </article>
+      </section>
+
+      <section class="panel" id="panel-profile">
+        <article class="card">
+          <h2>Profilo cliente</h2>
+          <p>Aggiorna i dati account e cambia password. Se cambi password riceverai una email di conferma.</p>
+          <form class="form" id="profile-form" style="margin-top:16px">
+            <div class="form-grid">
+              <label>Nome e cognome<input name="name" required></label>
+              <label>Azienda<input name="company"></label>
+            </div>
+            <div class="form-grid">
+              <label>Telefono<input name="phone"></label>
+              <label>P.IVA / CF<input name="vat"></label>
+            </div>
+            <label>Indirizzo<input name="address"></label>
+            <label>Nuova password opzionale<input name="password" type="password" minlength="6" placeholder="Lascia vuoto se non vuoi cambiarla"></label>
+            <button class="btn" type="submit">Salva profilo</button>
+            <p class="result" id="profile-result"></p>
+          </form>
+        </article>
+      </section>
+
+      <section class="panel" id="panel-contact">
+        <article class="card"><h2>Contatti rapidi</h2><p>Usa il canale che preferisci per parlare con Reitano Automazioni.</p><div class="list" id="contact-list" style="margin-top:16px"></div></article>
+      </section>
+    </section>
+  </main>
+
+  <script src="/js/client-app.js?v=floating-google-v17" defer></script>
+  <script src="/js/cookie-consent.js?v=cookie-v1" defer></script>
+</body>
+</html>

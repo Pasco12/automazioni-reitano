@@ -1,0 +1,33 @@
+{
+  "name": "reitano-automazioni-industriali-service",
+  "version": "1.0.0",
+  "description": "Sito vetrina modificabile per Reitano Automazioni Industriali & Service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "release:patch": "node scripts/release.js patch",
+    "release:minor": "node scripts/release.js minor",
+    "release:major": "node scripts/release.js major",
+    "test:email": "node scripts/test-email.js",
+    "config:google": "node scripts/configure-google.js"
+  },
+  "keywords": [
+    "automazioni",
+    "industriale",
+    "service",
+    "express",
+    "sito-vetrina"
+  ],
+  "author": "Reitano Automazioni Industriali & Service",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^9.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

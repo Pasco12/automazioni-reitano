@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#0f3b68"/></linearGradient>
+    <linearGradient id="a" x1="0" x2="1"><stop stop-color="#67e8f9"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+  <g opacity=".16" stroke="#e0f2fe" stroke-width="2">
+    <path d="M0 130h1200M0 260h1200M0 390h1200M0 520h1200M0 650h1200"/>
+    <path d="M160 0v800M330 0v800M500 0v800M670 0v800M840 0v800M1010 0v800"/>
+  </g>
+  <g transform="translate(170 170)">
+    <rect x="0" y="160" width="860" height="220" rx="34" fill="#0b1729" stroke="#1e5b8d" stroke-width="5"/>
+    <rect x="70" y="210" width="210" height="118" rx="18" fill="#101f36" stroke="#38bdf8" stroke-width="4"/>
+    <rect x="330" y="210" width="210" height="118" rx="18" fill="#101f36" stroke="#38bdf8" stroke-width="4"/>
+    <rect x="590" y="210" width="210" height="118" rx="18" fill="#101f36" stroke="#38bdf8" stroke-width="4"/>
+    <path d="M280 270h50M540 270h50" stroke="url(#a)" stroke-width="12" stroke-linecap="round" filter="url(#glow)"/>
+    <circle cx="175" cy="268" r="42" fill="url(#a)" opacity=".9" filter="url(#glow)"/>
+    <path d="M158 268h34m-17-17v34" stroke="#07111f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M390 300l36-62 36 62h-72Z" fill="#67e8f9" opacity=".92"/>
+    <path d="M665 240h60m-60 30h90m-90 30h44" stroke="#67e8f9" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <text x="86" y="710" fill="#e0f2fe" font-family="Arial, sans-serif" font-size="54" font-weight="700">Automazione industriale</text>
+</svg>

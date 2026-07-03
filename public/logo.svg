@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+  <title id="title">Reitano Automazioni Industriali &amp; Service</title>
+  <desc id="desc">Logo vettoriale Reitano con monogramma R nero, accento blu e servizi: quadri elettrici, PLC, manutenzioni e cablaggi.</desc>
+  <rect width="1280" height="820" fill="#ffffff"/>
+  <defs>
+    <style>
+      .black{fill:#111216}.blue{fill:#0b69c7}.line{stroke:#0b69c7;stroke-width:5;stroke-linecap:round}.word{font-family:Arial, Helvetica, sans-serif;font-weight:700;letter-spacing:34px}.sub{font-family:Arial, Helvetica, sans-serif;font-weight:500;letter-spacing:14px}.small{font-family:Arial, Helvetica, sans-serif;font-weight:600;letter-spacing:12px}
+    </style>
+  </defs>
+
+  <!-- Monogramma R vettoriale stilizzato -->
+  <g transform="translate(0 10)">
+    <path class="black" d="M524 192h166c48 0 87 39 87 87s-39 87-87 87h-77l118 132h-66L549 366h139c29 0 53-24 53-53s-24-53-53-53H550l-26-68Z"/>
+    <path class="black" d="M611 318h86c18 0 33-15 33-33s-15-33-33-33H560l51 66Z" opacity=".98"/>
+    <path class="blue" d="M540 350h42l66 82h-42l-66-82Z"/>
+  </g>
+
+  <!-- Linee laterali -->
+  <path class="line" d="M104 520h116"/>
+  <path class="line" d="M1060 520h116"/>
+
+  <!-- Wordmark -->
+  <text class="word black" x="253" y="555" font-size="92">REITANO</text>
+  <text class="sub black" x="260" y="620" font-size="34">AUTOMAZIONI INDUSTRIALI &amp; SERVICE</text>
+  <text class="small black" x="191" y="698" font-size="30">QUADRI ELETTRICI</text>
+  <text class="small blue" x="494" y="698" font-size="30">|</text>
+  <text class="small black" x="535" y="698" font-size="30">PLC</text>
+  <text class="small blue" x="624" y="698" font-size="30">|</text>
+  <text class="small black" x="663" y="698" font-size="30">MANUTENZIONI</text>
+  <text class="small blue" x="913" y="698" font-size="30">|</text>
+  <text class="small black" x="953" y="698" font-size="30">CABLAGGI</text>
+</svg>

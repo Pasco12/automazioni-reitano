@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+    <linearGradient id="c" x1="0" x2="1"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+  <g transform="translate(250 90)">
+    <rect x="0" y="0" width="700" height="540" rx="40" fill="#0b1729" stroke="#334155" stroke-width="10"/>
+    <rect x="52" y="52" width="596" height="436" rx="24" fill="#111f32"/>
+    <g stroke-width="10" stroke-linecap="round" fill="none">
+      <path d="M110 130h170v90h160v116h145" stroke="#38bdf8"/>
+      <path d="M110 210h110v180h245" stroke="#f59e0b"/>
+      <path d="M110 290h70v-86h370" stroke="#22c55e"/>
+      <path d="M110 370h130v-84h330" stroke="#ef4444"/>
+    </g>
+    <g fill="#e0f2fe">
+      <circle cx="110" cy="130" r="20"/><circle cx="110" cy="210" r="20"/><circle cx="110" cy="290" r="20"/><circle cx="110" cy="370" r="20"/>
+      <rect x="520" y="105" width="82" height="82" rx="14" fill="url(#c)"/>
+      <rect x="520" y="235" width="82" height="82" rx="14" fill="#64748b"/>
+      <rect x="520" y="360" width="82" height="82" rx="14" fill="#64748b"/>
+    </g>
+  </g>
+  <text x="86" y="710" fill="#e0f2fe" font-family="Arial, sans-serif" font-size="54" font-weight="700">Quadri elettrici industriali</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#082f49"/></linearGradient>
+    <linearGradient id="m" x1="0" x2="1"><stop stop-color="#e0f2fe"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+  <g transform="translate(220 120)">
+    <circle cx="380" cy="245" r="210" fill="#0b1729" stroke="#1e5b8d" stroke-width="8"/>
+    <path d="M510 155c-40-40-104-40-144 0-29 29-37 72-22 109L210 398l70 70 134-134c37 15 80 7 109-22 40-40 40-104 0-144l-75 75-56-56 75-75c15 8 29 18 43 31Z" fill="url(#m)"/>
+    <path d="M120 82h95m-52-40v80M545 470h95m-52-40v80" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" opacity=".75"/>
+    <rect x="620" y="135" width="180" height="250" rx="26" fill="#101f36" stroke="#38bdf8" stroke-width="5"/>
+    <path d="M660 195h100M660 250h70M660 305h112" stroke="#e0f2fe" stroke-width="14" stroke-linecap="round" opacity=".9"/>
+  </g>
+  <text x="86" y="710" fill="#e0f2fe" font-family="Arial, sans-serif" font-size="54" font-weight="700">Service e manutenzione</text>
+</svg>

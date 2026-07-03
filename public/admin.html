@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Reitano Automazioni</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="/favicon.svg?v=floating-google-v17" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/admin.css?v=floating-google-v17">
+</head>
+<body>
+  <main class="login-screen" id="login-screen">
+    <form class="login-card" id="login-form">
+      <img src="/logo-brand.png" alt="Logo" width="72" height="72">
+      <h1>Pannello admin</h1>
+      <p>Accedi per modificare testi, contatti, servizi, lavori e immagini del sito.</p>
+      <label>Password admin
+        <input type="password" name="password" autocomplete="current-password" required placeholder="Inserisci password">
+      </label>
+      <label class="hidden" id="login-2fa-wrap">Codice 2FA
+        <input type="text" name="code" inputmode="numeric" autocomplete="one-time-code" placeholder="000000">
+      </label>
+      <button class="btn" type="submit">Entra</button>
+      <p class="message" id="login-message" aria-live="polite"></p>
+
+      <a href="/">Torna al sito</a>
+    </form>
+  </main>
+
+  <main class="admin-shell hidden" id="admin-shell">
+    <aside class="sidebar">
+      <a class="admin-brand" href="/" target="_blank" rel="noopener">
+        <img src="/logo-brand.png" alt="Logo" width="48" height="48">
+        <span><strong>Reitano</strong><small>Admin editor</small></span>
+      </a>
+      <nav class="tabs" aria-label="Sezioni admin">
+        <button class="tab active" data-tab="general" type="button">Contenuti base</button>
+        <button class="tab" data-tab="services" type="button">Servizi</button>
+        <button class="tab" data-tab="projects" type="button">Lavori + immagini</button>
+        <button class="tab" data-tab="extra" type="button">Metodo + numeri</button>
+        <button class="tab" data-tab="security" type="button">Sicurezza</button>
+        <button class="tab" data-tab="reset" type="button">Ripristino</button>
+        <button class="tab" data-tab="localadmin" type="button">Local Admin</button>
+        <button class="tab" data-tab="json" type="button">JSON avanzato</button>
+      </nav>
+      <div class="sidebar-actions">
+        <a class="btn btn-ghost" href="/" target="_blank" rel="noopener">Apri sito</a>
+        <button class="btn danger" id="logout-btn" type="button">Esci</button>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="top-actions">
+        <div>
+          <p class="eyebrow">Editor contenuti</p>
+          <h1>Modifica il sito vetrina</h1>
+          <p id="status" class="status">Pronto.</p>
+        </div>
+        <button class="btn" id="save-btn" type="button">Salva modifiche</button>
+      </header>
+
+      <section class="panel active" id="tab-general">
+        <div class="panel-head">
+          <h2>Contenuti base e contatti</h2>
+          <p>Modifica nome, hero, SEO e dati di contatto. I form useranno automaticamente telefono, email e WhatsApp inseriti qui.</p>
+        </div>
+        <div class="editor-grid" id="general-editor"></div>
+      </section>
+
+      <section class="panel" id="tab-services">
+        <div class="panel-head row-head">
+          <div>
+            <h2>Servizi</h2>
+            <p>Aggiungi, rimuovi o modifica i servizi mostrati in home e nel menu preventivo.</p>
+          </div>
+          <button class="btn btn-ghost" id="add-service" type="button">+ Aggiungi servizio</button>
+        </div>
+        <div class="repeaters" id="services-editor"></div>
+      </section>
+
+      <section class="panel" id="tab-projects">
+        <div class="panel-head row-head">
+          <div>
+            <h2>Lavori e immagini</h2>
+            <p>Carica JPG/PNG/WEBP/GIF e sostituisci le immagini. Dopo il caricamento premi “Salva modifiche”.</p>
+          </div>
+          <button class="btn btn-ghost" id="add-project" type="button">+ Aggiungi lavoro</button>
+        </div>
+        <div class="repeaters" id="projects-editor"></div>
+      </section>
+
+      <section class="panel" id="tab-extra">
+        <div class="panel-head row-head">
+          <div>
+            <h2>Metodo, numeri e testo aziendale</h2>
+            <p>Personalizza la sezione “Approccio”, gli step di lavoro e i numeri nel blocco hero.</p>
+          </div>
+          <div class="mini-actions">
+            <button class="btn btn-ghost" id="add-stat" type="button">+ Numero</button>
+            <button class="btn btn-ghost" id="add-step" type="button">+ Step</button>
+          </div>
+        </div>
+        <div id="extra-editor"></div>
+      </section>
+
+      <section class="panel" id="tab-security">
+        <div class="panel-head">
+          <h2>Sicurezza amministratore</h2>
+          <p>Cambia la password di accesso ad admin e local admin. La nuova password viene salvata nel backend.</p>
+        </div>
+        <section class="group-card full">
+          <h3>Cambia password admin</h3>
+          <form class="field-grid" id="admin-password-form">
+            <label>Password attuale<input name="currentPassword" type="password" required autocomplete="current-password"></label>
+            <label>Nuova password<input name="newPassword" type="password" required minlength="10" autocomplete="new-password"></label>
+            <label>Ripeti nuova password<input name="confirmPassword" type="password" required minlength="10" autocomplete="new-password"></label>
+            <div style="display:flex;align-items:end"><button class="btn" type="submit">Salva nuova password</button></div>
+          </form>
+          <p class="status" id="password-status"></p>
+        </section>
+        <section class="group-card full">
+          <h3>Autenticazione a due fattori 2FA</h3>
+          <p class="help">Consigliato: usa Google Authenticator, Microsoft Authenticator, 1Password o app compatibile. Genera il codice, salvalo nell'app e conferma con il codice a 6 cifre.</p>
+          <div class="field-grid">
+            <button class="btn btn-ghost" id="twofa-status-btn" type="button">Controlla stato 2FA</button>
+            <button class="btn" id="twofa-setup-btn" type="button">Genera codice 2FA</button>
+          </div>
+          <div class="twofa-box hidden" id="twofa-box">
+            <label>Chiave segreta 2FA<input id="twofa-secret" readonly></label>
+            <label>URI Authenticator<textarea id="twofa-uri" readonly rows="3"></textarea></label>
+            <form class="field-grid" id="twofa-enable-form">
+              <label>Codice app Authenticator<input name="code" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" required></label>
+              <div style="display:flex;align-items:end"><button class="btn" type="submit">Attiva 2FA</button></div>
+            </form>
+          </div>
+          <form class="field-grid" id="twofa-disable-form" style="margin-top:14px">
+            <label>Password admin per disattivare<input name="currentPassword" type="password" autocomplete="current-password"></label>
+            <div style="display:flex;align-items:end"><button class="btn danger" type="submit">Disattiva 2FA</button></div>
+          </form>
+          <p class="status" id="twofa-status"></p>
+        </section>
+        <section class="group-card full">
+          <h3>Test invio email SMTP</h3>
+          <form class="field-grid" id="test-email-form">
+            <label>Email destinatario<input name="to" type="email" placeholder="info@tuodominio.it"></label>
+            <div style="display:flex;align-items:end"><button class="btn btn-ghost" type="submit">Invia email test</button></div>
+          </form>
+          <p class="status" id="test-email-status"></p>
+        </section>
+      </section>
+
+      <section class="panel" id="tab-reset">
+        <div class="panel-head">
+          <h2>Ripristino sito</h2>
+          <p>Usa questi comandi se colori, font o contenuti non si salvano correttamente. Prima del reset completo viene creato un backup automatico.</p>
+        </div>
+        <section class="group-card full">
+          <h3>Reset sicuri</h3>
+          <div class="field-grid">
+            <button class="btn btn-ghost" id="reset-theme-btn" type="button">Ripristina solo colori/font</button>
+            <button class="btn danger" id="reset-site-btn" type="button">Reset contenuti sito</button>
+            <button class="btn btn-ghost" id="export-content-btn" type="button">Esporta contenuti JSON</button>
+          </div>
+          <p class="status" id="reset-status"></p>
+        </section>
+      </section>
+
+      <section class="panel" id="tab-localadmin">
+        <div class="panel-head row-head">
+          <div>
+            <h2>Local Admin operativo</h2>
+            <p>Da qui accedi alla gestione completa: richieste sito, clienti, interventi, fatture, scadenze, pagamenti e grafici.</p>
+          </div>
+          <a class="btn" href="/local-admin" target="_blank" rel="noopener">Apri Local Admin</a>
+        </div>
+        <iframe class="admin-embed" src="/local-admin" title="Local Admin"></iframe>
+      </section>
+
+      <section class="panel" id="tab-json">
+        <div class="panel-head">
+          <h2>JSON avanzato</h2>
+          <p>Editor totale: qui puoi modificare ogni campo del sito. Usa solo JSON valido.</p>
+        </div>
+        <textarea class="json-editor" id="json-editor" spellcheck="false"></textarea>
+        <div class="json-actions">
+          <button class="btn btn-ghost" id="apply-json" type="button">Applica JSON all'editor</button>
+          <button class="btn" id="save-json" type="button">Salva JSON</button>
+        </div>
+      </section>
+    </section>
+
+    <div class="save-dock" id="save-dock" aria-live="polite">
+      <span id="save-dock-message">Modifiche non salvate</span>
+      <button class="btn" id="save-btn-dock" type="button">Salva e applica al sito</button>
+    </div>
+  </main>
+
+  <script src="/js/admin.js?v=floating-google-v17" defer></script>
+</body>
+</html>
