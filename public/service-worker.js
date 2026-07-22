@@ -1,4 +1,4 @@
-const CACHE_NAME = 'reitano-app-v1.0.8';
+const CACHE_NAME = 'reitano-app-v1.0.9';
 const APP_SHELL = [
   '/app',
   '/admin-app',
@@ -29,6 +29,25 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (url.pathname.startsWith('/api/')) return;
   if (event.request.method !== 'GET') return;
+
+  const mustBeFresh = event.request.mode === 'navigate'
+    || url.pathname === '/'
+    || url.pathname === '/js/app.js'
+    || url.pathname === '/css/style.css';
+
+  if (mustBeFresh) {
+    event.respondWith(
+      fetch(event.request).then((response) => {
+        if (response.ok && url.origin === location.origin) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        }
+        return response;
+      }).catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
       if (response.ok && url.origin === location.origin) {
