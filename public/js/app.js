@@ -282,7 +282,7 @@
     if (!target) return;
 
     const links = [
-      { label: 'Facebook', url: contact.facebook, icon: '' },
+      { label: 'Facebook', url: contact.facebook, icon: '/facebook.svg' },
       { label: 'Instagram', url: contact.instagram, icon: '/instagram.svg' },
       { label: 'LinkedIn', url: contact.linkedin, icon: '' }
     ].filter((item) => Boolean(item.url));
