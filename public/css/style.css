@@ -181,6 +181,7 @@ p { margin: 0; }
 .socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .socials a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-weight: 800; display:inline-flex; align-items:center; gap:8px; }
 .socials a img { width:20px; height:20px; object-fit:contain; }
+.facebook-mark { width:20px; height:20px; border-radius:50%; background:#1877f2; color:#fff; display:inline-flex; align-items:flex-end; justify-content:center; overflow:hidden; font:700 21px/20px Arial, sans-serif; text-transform:none; }
 .lead-form { display: grid; gap: 14px; padding: 28px; border-radius: 30px; }
 .lead-form h3 { font-size: calc(var(--h3-size) + 3px); }
 .form-row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
