@@ -291,13 +291,13 @@
     if (!target) return;
 
     const links = [
-      { label: 'Facebook', url: contact.facebook, icon: '/facebook.svg' },
-      { label: 'Instagram', url: contact.instagram, icon: '/instagram.svg' },
+      { label: 'Facebook', url: contact.facebook, icon: '<span class="facebook-mark" aria-hidden="true">f</span>' },
+      { label: 'Instagram', url: contact.instagram, icon: '<img src="/instagram.svg" alt="" aria-hidden="true">' },
       { label: 'LinkedIn', url: contact.linkedin, icon: '' }
     ].filter((item) => Boolean(item.url));
 
     target.innerHTML = links.map((item) => (
-      `<a class="social-link" href="${escapeAttr(item.url)}" target="_blank" rel="noopener">${item.icon ? `<img src="${escapeAttr(item.icon)}" alt="" aria-hidden="true">` : ''}<span>${escapeHtml(item.label)}</span></a>`
+      `<a class="social-link" href="${escapeAttr(item.url)}" target="_blank" rel="noopener">${item.icon}<span>${escapeHtml(item.label)}</span></a>`
     )).join('');
   }
 
@@ -539,6 +539,11 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' })
+        .then((registration) => registration.update())
+        .catch(() => null);
+    }
     setupMenu();
     setupForms();
     setupScroller();
