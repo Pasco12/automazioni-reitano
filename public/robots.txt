@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin-app
+Disallow: /local-admin
+Disallow: /app
 
-Sitemap: /sitemap.xml
+Sitemap: https://www.automazionireitano.it/sitemap.xml

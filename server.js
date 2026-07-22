@@ -122,6 +122,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// Un solo host canonico in produzione. In locale non forza redirect.
+app.use((req, res, next) => {
+  const host = String(req.hostname || '').toLowerCase();
+  const forwardedProto = String(req.headers['x-forwarded-proto'] || '').split(',')[0].trim();
+  const isHttps = req.secure || forwardedProto === 'https';
+  if (host === 'automazionireitano.it' || (host === 'www.automazionireitano.it' && !isHttps)) {
+    return res.redirect(301, `https://www.automazionireitano.it${req.originalUrl}`);
+  }
+  next();
+});
+
 // Le API non devono essere cachate: così ogni modifica fatta da admin
 // si vede sul sito appena ricarichi la pagina. La cache statica resta attiva.
 app.use('/api', (req, res, next) => {
@@ -2048,8 +2059,133 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'admin.html'));
 });
 
-app.get('/lavori/:slug', (req, res) => {
-  res.sendFile(path.join(PUBLIC_DIR, 'work.html'));
+function htmlEscape(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function xmlEscape(value) {
+  return htmlEscape(value).replace(/&#039;/g, '&apos;');
+}
+
+function projectSlug(project) {
+  return String(project?.slug || project?.title || 'lavoro')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'lavoro';
+}
+
+function absolutePublicUrl(value, fallback = '/') {
+  const raw = String(value || fallback);
+  if (/^https?:\/\//i.test(raw)) return raw;
+  return `https://www.automazionireitano.it${raw.startsWith('/') ? raw : `/${raw}`}`;
+}
+
+function renderWorkPage(template, content, project) {
+  const brand = content.brand || {};
+  const contact = content.contact || {};
+  const slug = projectSlug(project);
+  const canonical = `https://www.automazionireitano.it/lavori/${encodeURIComponent(slug)}`;
+  const title = `${project.title} | ${brand.shortName || 'Reitano Automazioni'}`;
+  const description = project.description || content.seo?.description || 'Automazione industriale, quadri elettrici e service.';
+  const image = absolutePublicUrl(project.image, '/logo-brand.png');
+  const gallery = [project.image, ...(Array.isArray(project.gallery) ? project.gallery : [])].filter(Boolean);
+  const bullets = Array.isArray(project.bullets) ? project.bullets : [];
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description,
+    url: canonical,
+    image,
+    creator: {
+      '@type': 'LocalBusiness',
+      name: brand.name || 'Reitano Automazioni Industriali & Service',
+      telephone: contact.phone || undefined,
+      email: contact.email || undefined,
+      url: 'https://www.automazionireitano.it/'
+    }
+  };
+  const head = `
+  <link rel="canonical" href="${htmlEscape(canonical)}">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="${htmlEscape(brand.name || 'Reitano Automazioni')}">
+  <meta property="og:title" content="${htmlEscape(title)}">
+  <meta property="og:description" content="${htmlEscape(description)}">
+  <meta property="og:url" content="${htmlEscape(canonical)}">
+  <meta property="og:image" content="${htmlEscape(image)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`;
+  const body = `
+      <a class="back-link" href="/#lavori">← Torna a tutti i lavori</a>
+      <section class="detail-hero reveal visible">
+        <div class="detail-cover"><img src="${htmlEscape(project.image || '/img/project-automazione.svg')}" alt="${htmlEscape(project.title)}" width="1200" height="800"></div>
+        <article class="detail-card">
+          <div>
+            <p class="eyebrow">${htmlEscape(project.category || 'Lavoro')}</p>
+            <h1>${htmlEscape(project.title)}</h1>
+            <p class="detail-description">${htmlEscape(description)}</p>
+            <div class="detail-meta-grid">
+              <div class="detail-meta"><span>Zona</span><strong>${htmlEscape(project.location || contact.city || 'Calabria')}</strong></div>
+              <div class="detail-meta"><span>Anno</span><strong>${htmlEscape(project.year || '')}</strong></div>
+              <div class="detail-meta"><span>Categoria</span><strong>${htmlEscape(project.category || 'Automazione industriale')}</strong></div>
+            </div>
+          </div>
+          <div class="hero-actions"><a class="btn" href="/#contatti">Richiedi un lavoro simile</a></div>
+        </article>
+      </section>
+      <section class="detail-content-grid reveal visible">
+        <article class="detail-section-card"><p class="eyebrow">Dettagli</p><h2>Descrizione intervento</h2><p>${htmlEscape(project.detailedDescription || description)}</p></article>
+        <aside class="detail-section-card"><p class="eyebrow">Attività</p><h2>Cosa è stato gestito</h2><ul class="clean-list">${(bullets.length ? bullets : ['Analisi tecnica', 'Intervento operativo', 'Collaudo finale']).map((item) => `<li>${htmlEscape(item)}</li>`).join('')}</ul></aside>
+      </section>
+      <section class="reveal visible" style="margin-top:44px"><div class="section-head"><div><p class="eyebrow">Gallery</p><h2>Immagini del lavoro</h2></div></div><div class="detail-gallery">${gallery.map((item, index) => `<a href="${htmlEscape(item)}" target="_blank" rel="noopener"><img src="${htmlEscape(item)}" alt="${htmlEscape(project.title)} - immagine ${index + 1}" loading="lazy"></a>`).join('')}</div></section>`;
+
+  return template
+    .replace(/<title>[\s\S]*?<\/title>/i, `<title>${htmlEscape(title)}</title>`)
+    .replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="${htmlEscape(description)}">`)
+    .replace('</head>', `${head}\n</head>`)
+    .replace(/<div class="container" id="work-detail">[\s\S]*?<\/div>\s*<\/main>/i, `<div class="container" id="work-detail">${body}</div>\n  </main>`);
+}
+
+app.get('/sitemap.xml', async (req, res) => {
+  const content = await readJson(CONTENT_FILE, {});
+  const projects = Array.isArray(content.projects) ? content.projects : [];
+  const urls = [
+    { loc: 'https://www.automazionireitano.it/', priority: '1.0', changefreq: 'weekly' },
+    ...projects.map((project) => ({
+      loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
+      priority: '0.7',
+      changefreq: 'monthly'
+    }))
+  ];
+  const contentStat = await fsp.stat(CONTENT_FILE).catch(() => null);
+  const lastmod = (contentStat?.mtime || new Date()).toISOString().slice(0, 10);
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${xmlEscape(url.loc)}</loc><lastmod>${lastmod}</lastmod><changefreq>${url.changefreq}</changefreq><priority>${url.priority}</priority></url>`).join('\n')}\n</urlset>\n`;
+  res.type('application/xml').send(xml);
+});
+
+app.get('/lavori/:slug', async (req, res) => {
+  const [content, template] = await Promise.all([
+    readJson(CONTENT_FILE, {}),
+    fsp.readFile(path.join(PUBLIC_DIR, 'work.html'), 'utf8')
+  ]);
+  const project = (Array.isArray(content.projects) ? content.projects : [])
+    .find((item) => projectSlug(item) === req.params.slug);
+  if (!project) {
+    const notFound = template
+      .replace(/<title>[\s\S]*?<\/title>/i, '<title>Lavoro non trovato | Reitano Automazioni</title>')
+      .replace('</head>', '<meta name="robots" content="noindex,follow">\n</head>')
+      .replace(/<div class="container" id="work-detail">[\s\S]*?<\/div>\s*<\/main>/i, '<div class="container" id="work-detail"><section class="not-found"><p class="eyebrow">Pagina non trovata</p><h1>Questo lavoro non è disponibile.</h1><p>Puoi tornare al portfolio o richiedere informazioni su un intervento simile.</p><div class="hero-actions"><a class="btn" href="/#lavori">Torna ai lavori</a><a class="btn btn-soft" href="/#contatti">Contatti</a></div></section></div></main>');
+    return res.status(404).send(notFound);
+  }
+  res.send(renderWorkPage(template, content, project));
 });
 
 app.use(express.static(PUBLIC_DIR, {
@@ -2058,7 +2194,7 @@ app.use(express.static(PUBLIC_DIR, {
 }));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+  res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'));
 });
 
 app.listen(PORT, () => {
