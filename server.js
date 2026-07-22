@@ -2109,6 +2109,20 @@ function renderWorkPage(template, content, project) {
       name: brand.name || 'Reitano Automazioni Industriali & Service',
       telephone: contact.phone || undefined,
       email: contact.email || undefined,
+      vatID: contact.vatNumber ? `IT${contact.vatNumber}` : 'IT03365930803',
+      identifier: {
+        '@type': 'PropertyValue',
+        propertyID: 'REA',
+        value: contact.rea || 'RC-227010'
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: contact.address || 'Via Garibaldi 200',
+        addressLocality: 'Gioia Tauro',
+        addressRegion: 'RC',
+        postalCode: contact.postalCode || '89013',
+        addressCountry: 'IT'
+      },
       url: 'https://www.automazionireitano.it/'
     }
   };
