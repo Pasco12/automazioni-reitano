@@ -1,6 +1,8 @@
 (() => {
   const COOKIE_NAME = 'reitano_cookie_consent';
   const VERSION = '1.0';
+  const GA_ID = 'G-8Y44XGZWPC';
+  let analyticsLoaded = false;
 
   function getCookie(name) {
     return document.cookie.split('; ').find((row) => row.startsWith(`${name}=`))?.split('=')[1] || '';
@@ -23,7 +25,28 @@
 
   function apply(consent) {
     window.reitanoCookieConsent = consent;
+    if (consent?.marketing) loadAnalytics();
     window.dispatchEvent(new CustomEvent('reitano:cookie-consent', { detail: consent }));
+  }
+
+  function loadAnalytics() {
+    if (analyticsLoaded || document.querySelector(`script[data-ga-id="${GA_ID}"]`)) return;
+    analyticsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+    const script = document.createElement('script');
+    script.async = true;
+    script.dataset.gaId = GA_ID;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
+    document.head.appendChild(script);
   }
 
   function save(consent) {
@@ -55,7 +78,7 @@
         <p>Puoi scegliere quali cookie autorizzare. I cookie tecnici sono necessari al funzionamento di sito, area clienti e sicurezza.</p>
         <div class="cookie-row"><div><strong>Tecnici necessari</strong><small>Login, sicurezza, preferenze essenziali. Sempre attivi.</small></div><input type="checkbox" checked disabled></div>
         <div class="cookie-row"><div><strong>Funzionali</strong><small>Ricordano preferenze e migliorano l'esperienza.</small></div><input id="cookie-functional" type="checkbox" checked></div>
-        <div class="cookie-row"><div><strong>Marketing/statistiche</strong><small>Da usare solo se in futuro aggiungi analytics o campagne.</small></div><input id="cookie-marketing" type="checkbox"></div>
+        <div class="cookie-row"><div><strong>Statistiche e marketing</strong><small>Misurano visite e richieste e aiutano a valutare le campagne. Attivi solo con il tuo consenso.</small></div><input id="cookie-marketing" type="checkbox"></div>
         <div class="cookie-actions"><button class="primary" id="cookie-save">Salva preferenze</button><button id="cookie-reject-modal">Rifiuta non necessari</button></div>
       </div>`;
     document.body.appendChild(modal);

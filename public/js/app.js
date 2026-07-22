@@ -95,6 +95,15 @@
     return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   }
 
+  function trackEvent(name, params = {}) {
+    if (!window.reitanoCookieConsent?.marketing || typeof window.gtag !== 'function') return;
+    window.gtag('event', name, {
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+      ...params
+    });
+  }
+
   function applyTheme() {
     const theme = siteContent.theme || {};
     const root = document.documentElement;
@@ -411,11 +420,18 @@
         event.preventDefault();
         const form = link.closest('form');
         const url = buildWhatsAppUrl(form ? formMessage(form) : '');
+        trackEvent('whatsapp_click', { link_location: 'form', service: form?.querySelector('[name="service"]')?.value || '' });
         window.open(url, '_blank', 'noopener');
       });
     });
 
     $$('[data-lead-form]').forEach((form) => {
+      let formStarted = false;
+      form.addEventListener('focusin', () => {
+        if (formStarted) return;
+        formStarted = true;
+        trackEvent('form_start', { form_name: form.dataset.leadForm || 'lead' });
+      });
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const result = $('.form-result', form);
@@ -439,6 +455,11 @@
           const payload = await response.json();
           if (!response.ok || !payload.ok) throw new Error(payload.error || 'Errore invio richiesta');
 
+          trackEvent('generate_lead', {
+            form_name: form.dataset.leadForm || 'lead',
+            service: data.service || '',
+            lead_type: data.type || 'contact'
+          });
           form.reset();
           if (result) {
             result.className = 'form-result ok';
@@ -453,6 +474,15 @@
           if (button) button.disabled = false;
         }
       });
+    });
+
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href]');
+      if (!link || link.matches('[data-wa-form]')) return;
+      const hrefValue = link.getAttribute('href') || '';
+      if (hrefValue.startsWith('tel:')) trackEvent('phone_click', { link_location: link.id || link.className || 'page' });
+      else if (hrefValue.startsWith('mailto:')) trackEvent('email_click', { link_location: link.id || link.className || 'page' });
+      else if (hrefValue.includes('wa.me/')) trackEvent('whatsapp_click', { link_location: link.id || link.className || 'page' });
     });
   }
 
