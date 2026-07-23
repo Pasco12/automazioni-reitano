@@ -536,7 +536,7 @@
     "sectionTitleSize": "clamp(30px, 4.2vw, 54px)",
     "heading3Size": "22px",
     "cardTitleSize": "21px",
-    "homeBgImage": "",
+    "homeBgImage": "/home-background.png",
     "heroOverlayOpacity": "0.84",
     "heroImageOpacity": "0.14"
   }
