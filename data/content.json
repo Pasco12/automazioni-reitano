@@ -30,8 +30,8 @@
   },
   "hero": {
     "kicker": "Disponibile per interventi",
-    "title": "Automazione industriale che mantiene la produzione in movimento",
-    "subtitle": "PLC, quadri elettrici, impianti e revamping progettati per aumentare controllo, affidabilità e continuità operativa.",
+    "title": "Reitano Automazioni",
+    "subtitle": "Programmazione PLC, impianti elettrici, quadri elettrici, automazione industriale e rifacimenti completi. Soluzioni ordinate, sicure e pensate per far lavorare meglio il tuo impianto.",
     "primaryCta": "Richiedi Preventivo",
     "secondaryCta": "Chiama ora"
   },
@@ -40,14 +40,14 @@
     "servicesTitle": "Cosa facciamo",
     "servicesText": "Dalla programmazione PLC alla realizzazione di quadri elettrici: un supporto completo per impianti e macchine industriali.",
     "aboutKicker": "Chi siamo",
-    "aboutTitle": "Competenza tecnica, rapporto diretto e attenzione al risultato",
-    "aboutText": "Seguiamo ogni intervento con ordine, responsabilità e attenzione ai dettagli. Dall’analisi iniziale al collaudo, il cliente mantiene un contatto diretto con chi esegue il lavoro.",
+    "aboutTitle": "Passione e competenza al servizio del cliente",
+    "aboutText": "Ogni progetto viene seguito con cura e attenzione ai dettagli, con lavori ordinati, materiali adatti e soluzioni pensate per durare. Operiamo su automazione, quadri elettrici, diagnostica, revamping e manutenzione.",
     "processKicker": "Processo",
     "processTitle": "Come lavoriamo",
     "processText": "Un metodo semplice: ascolto, sopralluogo, preventivo e realizzazione con test finale.",
     "worksKicker": "Competenze",
-    "worksTitle": "Competenze integrate, un unico referente",
-    "worksText": "Dalla logica PLC al quadro elettrico, dalla diagnostica al revamping: coordiniamo le attività necessarie per ottenere un impianto più affidabile e gestibile.",
+    "worksTitle": "Soluzioni per l’industria",
+    "worksText": "Ambiti di intervento presentati con grafiche neutre. I casi studio reali verranno pubblicati con fotografie e dati verificati.",
     "reviewsKicker": "Recensioni",
     "reviewsTitle": "Dicono di noi",
     "reviewsText": "Feedback generici modificabili dal pannello admin tramite JSON avanzato.",
@@ -57,7 +57,7 @@
     "contactKicker": "Contatti",
     "contactTitle": "Parliamone",
     "contactText": "Per assistenza, sopralluoghi, modifiche o nuovi quadri puoi scrivere dal form, chiamare o usare WhatsApp.",
-    "order": "chi-siamo,lavori,metodo,home-cta,recensioni,contatti"
+    "order": "servizi,chi-siamo,metodo,lavori,recensioni,contatti"
   },
   "stats": [
     {
