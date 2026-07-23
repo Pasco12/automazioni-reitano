@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#164e63"/></linearGradient><linearGradient id="a" x1="0" x2="1"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+  <rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+  <g transform="translate(150 105)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M60 420V150l190-95 190 95v270M440 420V220l190-95 190 95v200" stroke="#64748b" stroke-width="22"/>
+    <path d="M130 420V245h220v175M520 420V290h220v130" stroke="#e0f2fe" stroke-width="16"/>
+    <path d="M160 190h160M550 245h160" stroke="#38bdf8" stroke-width="16"/>
+    <path d="M0 470h900" stroke="#475569" stroke-width="18"/>
+    <path d="M210 245v-70h470v70M440 175v-75" stroke="url(#a)" stroke-width="14"/>
+    <circle cx="440" cy="72" r="38" fill="url(#a)" stroke="none"/>
+    <path d="m430 50-18 32h25l-9 26 39-48h-25l10-10Z" fill="#07111f" stroke="none"/>
+  </g>
+  <text x="86" y="710" fill="#e0f2fe" font-family="Arial, sans-serif" font-size="54" font-weight="700">Impianti elettrici industriali</text>
+</svg>

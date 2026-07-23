@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#172554"/></linearGradient><linearGradient id="a" x1="0" x2="1"><stop stop-color="#67e8f9"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
+  <rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+  <g transform="translate(180 105)">
+    <rect x="80" y="35" width="580" height="480" rx="38" fill="#0b1729" stroke="#334155" stroke-width="9"/>
+    <rect x="135" y="95" width="470" height="300" rx="24" fill="#101f36"/>
+    <g stroke-width="12" stroke-linecap="round"><path d="M190 160h130v70h145" stroke="#ef4444"/><path d="M190 245h90v88h230" stroke="#f59e0b"/><path d="M190 330h125v-52h210" stroke="#38bdf8"/></g>
+    <g fill="#e0f2fe"><circle cx="190" cy="160" r="16"/><circle cx="190" cy="245" r="16"/><circle cx="190" cy="330" r="16"/></g>
+    <path d="M670 165a170 170 0 0 1 92 252" fill="none" stroke="url(#a)" stroke-width="28" stroke-linecap="round"/>
+    <path d="m720 413 55 18 3-62" fill="none" stroke="#3b82f6" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M690 445a170 170 0 0 1-100 62" fill="none" stroke="#67e8f9" stroke-width="28" stroke-linecap="round"/>
+  </g>
+  <text x="86" y="710" fill="#e0f2fe" font-family="Arial, sans-serif" font-size="54" font-weight="700">Revamping e aggiornamento</text>
+</svg>

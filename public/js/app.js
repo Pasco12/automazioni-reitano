@@ -206,45 +206,51 @@
   function renderHeroPhotos() {
     const target = $('#hero-photo-stack');
     const heroImage = $('#hero-main-image');
-    const projects = Array.isArray(siteContent.projects) ? siteContent.projects : [];
-    if (!projects.length) return;
-
     if (heroImage) {
-      const featured = projects[Math.min(9, projects.length - 1)] || projects[0];
-      heroImage.src = featured.image || '/img/project-automazione.svg';
-      heroImage.alt = featured.title || 'Lavoro Reitano Automazioni';
+      heroImage.src = '/img/hero-automazione-neutra.webp';
+      heroImage.alt = 'Rappresentazione concettuale di una soluzione di automazione industriale';
     }
 
     if (!target) return;
-    const selected = [projects[0], projects[Math.min(9, projects.length - 1)], projects[Math.min(17, projects.length - 1)]].filter(Boolean);
-    target.innerHTML = selected.map((project) => `
-      <img src="${escapeAttr(project.image || '/img/project-automazione.svg')}" alt="${escapeAttr(project.title || 'Lavoro realizzato')}" loading="eager" onerror="this.src='/img/project-automazione.svg'">
+    target.innerHTML = [
+      ['/img/project-plc.svg', 'Programmazione PLC'],
+      ['/img/project-quadro.svg', 'Quadri elettrici'],
+      ['/img/project-service.svg', 'Assistenza industriale']
+    ].map(([image, label]) => `
+      <img src="${image}" alt="Grafica: ${label}" loading="eager">
     `).join('');
   }
 
   function renderProjects() {
-    const projects = Array.isArray(siteContent.projects) ? siteContent.projects : [];
+    const services = Array.isArray(siteContent.services) ? siteContent.services : [];
     const target = $('#work-grid') || $('#work-strip');
     if (!target) return;
 
-    target.innerHTML = projects.map((project) => {
-      const image = project.image || '/img/project-automazione.svg';
-      const slug = project.slug || slugify(project.title);
+    const graphics = [
+      '/img/project-plc.svg',
+      '/img/project-impianti.svg',
+      '/img/project-quadro.svg',
+      '/img/project-revamping.svg',
+      '/img/project-service.svg',
+      '/img/project-automazione.svg'
+    ];
+
+    target.innerHTML = services.map((service, index) => {
+      const image = graphics[index % graphics.length];
       return `
-        <a class="work-card reveal" href="/lavori/${escapeAttr(slug)}" aria-label="Apri dettaglio ${escapeAttr(project.title)}">
+        <article class="work-card capability-card reveal">
           <figure>
             <div class="work-image">
-              <img src="${escapeAttr(image)}" alt="${escapeAttr(project.title)}" loading="lazy" onerror="this.src='/img/project-automazione.svg'">
-              <span class="image-click-badge">Apri dettagli</span>
+              <img src="${image}" alt="Grafica: ${escapeAttr(service.title)}" loading="lazy">
             </div>
             <figcaption class="work-body">
-              <span class="work-meta">${escapeHtml(project.category || 'Lavoro')}</span>
-              <h3>${escapeHtml(project.title)}</h3>
-              <p>${escapeHtml(project.description)}</p>
-              <span class="work-open">Apri scheda lavoro</span>
+              <span class="work-meta">Competenza</span>
+              <h3>${escapeHtml(service.title)}</h3>
+              <p>${escapeHtml(service.description)}</p>
+              <a class="work-open" href="#contatti">Richiedi informazioni</a>
             </figcaption>
           </figure>
-        </a>
+        </article>
       `;
     }).join('');
   }
@@ -275,12 +281,21 @@
   }
 
   function renderTestimonials() {
-    const reviews = [
-      ...(Array.isArray(siteContent.testimonials) ? siteContent.testimonials : []),
-      ...(Array.isArray(siteContent.approvedReviews) ? siteContent.approvedReviews.map((review) => ({ name: review.clientName, role: review.company || review.interventionTitle || 'Cliente', text: review.text })) : [])
-    ];
+    const reviews = Array.isArray(siteContent.approvedReviews)
+      ? siteContent.approvedReviews.map((review) => ({
+        name: review.clientName,
+        role: review.company || review.interventionTitle || 'Cliente',
+        text: review.text
+      }))
+      : [];
     const target = $('#reviews-list');
     if (!target) return;
+    const section = target.closest('.reviews-section');
+    if (!reviews.length) {
+      if (section) section.hidden = true;
+      return;
+    }
+    if (section) section.hidden = false;
     target.innerHTML = reviews.map((review) => `
       <article class="review-card reveal">
         <blockquote>“${escapeHtml(review.text)}”</blockquote>
