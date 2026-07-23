@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://automazionireitano.it/</loc>
-    <lastmod>2026-07-07</lastmod>
+    <loc>https://www.automazionireitano.it/</loc>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url><loc>https://www.automazionireitano.it/lavori/quadro-automazione-con-inverter</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/diagnostica-contattori-e-comandi</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/scheda-elettronica-di-controllo</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/interfaccia-hmi-operatore</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/automazione-macchina-vibrante</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/analisi-tecnica-e-dimensionamento</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/studio-vibrazioni-e-controllo</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/schema-funzionale-impianto</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/manutenzione-quadro-esistente</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/quadro-comando-impianto-industriale</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/linea-automatizzata-in-officina</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/quadro-bordo-macchina</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/quadro-gestione-bruciatori-e-circolatori</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/revamping-armadio-automazione</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/automazione-impianto-in-cantiere</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/diagnostica-quadro-plc-e-azionamenti</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/impianto-industriale-con-nastri-e-protezioni</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/plc-omron-e-collegamenti-i-o</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.automazionireitano.it/lavori/quadro-elettromeccanico-con-contattori</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
