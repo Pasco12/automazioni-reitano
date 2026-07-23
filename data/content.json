@@ -45,9 +45,9 @@
     "processKicker": "Processo",
     "processTitle": "Come lavoriamo",
     "processText": "Un metodo semplice: ascolto, sopralluogo, preventivo e realizzazione con test finale.",
-    "worksKicker": "Portfolio",
-    "worksTitle": "Lavori recenti",
-    "worksText": "Clicca sulle immagini dei lavori per aprire una pagina dedicata con dettagli, descrizione tecnica e gallery aggiuntiva.",
+    "worksKicker": "Competenze",
+    "worksTitle": "Soluzioni per l’industria",
+    "worksText": "Ambiti di intervento presentati con grafiche neutre. I casi studio reali verranno pubblicati con fotografie e dati verificati.",
     "reviewsKicker": "Recensioni",
     "reviewsTitle": "Dicono di noi",
     "reviewsText": "Feedback generici modificabili dal pannello admin tramite JSON avanzato.",
@@ -536,7 +536,7 @@
     "sectionTitleSize": "clamp(30px, 4.2vw, 54px)",
     "heading3Size": "22px",
     "cardTitleSize": "21px",
-    "homeBgImage": "/home-background.png",
+    "homeBgImage": "",
     "heroOverlayOpacity": "0.84",
     "heroImageOpacity": "0.14"
   }

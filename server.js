@@ -2126,8 +2126,10 @@ function renderWorkPage(template, content, project) {
       url: 'https://www.automazionireitano.it/'
     }
   };
+  const robots = project.caseStudy === true ? 'index,follow' : 'noindex,follow';
   const head = `
   <link rel="canonical" href="${htmlEscape(canonical)}">
+  <meta name="robots" content="${robots}">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="${htmlEscape(brand.name || 'Reitano Automazioni')}">
@@ -2173,7 +2175,7 @@ app.get('/sitemap.xml', async (req, res) => {
   const projects = Array.isArray(content.projects) ? content.projects : [];
   const urls = [
     { loc: 'https://www.automazionireitano.it/', priority: '1.0', changefreq: 'weekly' },
-    ...projects.map((project) => ({
+    ...projects.filter((project) => project.caseStudy === true).map((project) => ({
       loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
       priority: '0.7',
       changefreq: 'monthly'
