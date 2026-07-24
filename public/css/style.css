@@ -224,6 +224,32 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent-color); b
 .detail-gallery a:hover img { transform: scale(1.04); }
 .not-found { max-width: 760px; margin: 80px auto; padding: 34px; border-radius: 30px; text-align: center; }
 
+.service-page-hero { position: relative; overflow: hidden; padding: 82px 0 92px; background: linear-gradient(135deg, rgba(46,118,226,.08), transparent 52%), var(--home-bg); border-bottom: 1px solid var(--line); }
+.service-page-hero::before { content: ""; position: absolute; inset: 0; background: url("/home-background.png") center/cover; opacity: .035; pointer-events: none; }
+.service-page-hero-grid { position: relative; display: grid; grid-template-columns: minmax(0,1.08fr) minmax(360px,.92fr); gap: 58px; align-items: center; }
+.service-page-hero h1 { font-size: clamp(42px,5vw,70px); }
+.service-page-lead { max-width: 720px; margin-top: 24px; color: var(--body-text-color); font-size: calc(var(--base-font-size) + 2px); }
+.service-page-visual { position: relative; }
+.service-page-visual > img { width: 100%; min-height: 480px; object-fit: cover; border: 10px solid var(--surface-bg); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+.service-page-badge { position: absolute; left: -24px; bottom: 30px; display: grid; padding: 17px 20px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface-bg); box-shadow: var(--shadow); }
+.service-page-badge strong { color: var(--heading-color); font-size: 18px; }
+.service-page-badge span { color: var(--muted); font-size: 13px; }
+.service-catalog { background: var(--home-bg); }
+.service-benefits { background: color-mix(in srgb, var(--accent-color) 5%, var(--home-bg)); border-block: 1px solid var(--line); }
+.service-benefits-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(420px,1.15fr); gap: 70px; align-items: start; }
+.service-benefit-list { display: grid; gap: 14px; }
+.service-benefit-list article { display: grid; grid-template-columns: 54px 1fr; gap: 18px; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface-bg); box-shadow: var(--shadow-soft); }
+.service-benefit-list article > span { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 15px; background: var(--accent-color); color: #fff; font-weight: 900; }
+.service-benefit-list h3 { font-size: 19px; }
+.service-benefit-list p { margin-top: 6px; color: var(--body-text-color); }
+.service-page-cta { padding: 74px 0; background: #0b1728; }
+.service-page-cta-inner { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr); gap: 64px; align-items: center; }
+.service-page-cta .section-kicker { color: #7fb6f4; }
+.service-page-cta h2 { color: #fff; font-size: clamp(30px,3.8vw,50px); }
+.service-page-cta-inner > div:last-child { display: grid; justify-items: start; gap: 20px; }
+.service-page-cta p { color: #c2cfdd; }
+.service-page-cta .btn { background: #2e76e2; }
+
 .site-footer { padding: 28px 0; background: var(--home-bg); border-top: 1px solid var(--line); }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: calc(var(--base-font-size) - 2px); }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
@@ -250,7 +276,9 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent-color); b
   body.menu-open .main-nav { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .main-nav a { padding: 12px; font-size: var(--nav-font-size); }
   .hero { min-height: auto; padding-top: 54px; }
-  .hero-grid, .about-grid, .contact-grid, .detail-hero, .detail-content-grid { grid-template-columns: 1fr; }
+  .hero-grid, .about-grid, .contact-grid, .detail-hero, .detail-content-grid, .service-page-hero-grid, .service-benefits-grid, .service-page-cta-inner { grid-template-columns: 1fr; }
+  .service-page-visual { max-width: 720px; }
+  .service-page-badge { left: 20px; }
   .hero-image-card img { height: 420px; }
   .about-media img { height: 440px; }
 }
@@ -263,6 +291,11 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent-color); b
   .hero-image-card img { height: 310px; }
   .about-media img { height: 330px; }
   .about-floating-card { position: static; margin-top: 12px; }
+  .service-page-hero { padding: 58px 0 70px; }
+  .service-page-visual > img { min-height: 310px; }
+  .service-page-badge { position: static; margin-top: 12px; }
+  .service-benefits-grid, .service-page-cta-inner { gap: 34px; }
+  .service-benefit-list article { grid-template-columns: 46px 1fr; padding: 18px; gap: 14px; }
   .lead-form { padding: 22px; border-radius: 26px; }
   .floating-wa { right: 12px; bottom: 12px; font-size: 0; padding: 12px 14px; }
   .floating-wa img { width: 22px; height: 22px; }
