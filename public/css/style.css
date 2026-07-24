@@ -126,6 +126,8 @@ p { margin: 0; }
 .service-icon svg { width: 30px; height: 30px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .service-card h3, .work-body h3 { font-size: var(--card-title-size); }
 .service-card p { margin: 12px 0 18px; color: var(--body-text-color); }
+.service-card-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; color: var(--accent-color); font-weight: 900; }
+.service-card-link::after { content: "→"; }
 .clean-list { list-style: none; display: grid; gap: 8px; margin: 0; padding: 0; }
 .clean-list li { position: relative; padding-left: 20px; color: var(--body-text-color); font-size: calc(var(--base-font-size) - 1px); }
 .clean-list li::before { content: ""; position: absolute; left: 0; top: .65em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-color); }
@@ -250,6 +252,33 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent-color); b
 .service-page-cta p { color: #c2cfdd; }
 .service-page-cta .btn { background: #2e76e2; }
 
+.service-detail-hero { position: relative; overflow: hidden; padding: 72px 0 88px; background: linear-gradient(135deg, rgba(46,118,226,.09), transparent 58%), var(--home-bg); border-bottom: 1px solid var(--line); }
+.service-detail-hero::before { content: ""; position: absolute; inset: 0; background: url("/home-background.png") center/cover; opacity: .025; pointer-events: none; }
+.service-detail-hero-grid { position: relative; display: grid; grid-template-columns: minmax(0,1.08fr) minmax(360px,.92fr); gap: 56px; align-items: center; }
+.service-detail-hero h1 { font-size: clamp(40px,4.8vw,68px); }
+.service-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; color: var(--muted); font-size: 13px; font-weight: 750; }
+.service-breadcrumb a:hover { color: var(--accent-color); }
+.service-detail-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+.service-detail-tags span { padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--accent-color) 22%, var(--line)); border-radius: 999px; background: var(--surface-bg); color: var(--heading-color); font-size: 13px; font-weight: 800; }
+.service-detail-visual img { width: 100%; min-height: 490px; object-fit: cover; border: 10px solid var(--surface-bg); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+.service-detail-intro > div:first-child { display: grid; grid-template-columns: minmax(0,.9fr) minmax(320px,.7fr); gap: 70px; align-items: end; margin-bottom: 42px; }
+.service-detail-intro > div:first-child p:last-child { color: var(--body-text-color); font-size: calc(var(--base-font-size) + 1px); }
+.service-detail-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.service-detail-grid article { padding: 24px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface-bg); box-shadow: var(--shadow-soft); }
+.service-detail-grid article > span { display: inline-block; margin-bottom: 26px; color: var(--accent-color); font-size: 13px; font-weight: 950; letter-spacing: .08em; }
+.service-detail-grid h3 { font-size: 20px; }
+.service-detail-grid p { margin-top: 10px; color: var(--body-text-color); }
+.plc-scenarios { background: color-mix(in srgb, var(--accent-color) 5%, var(--home-bg)); border-block: 1px solid var(--line); }
+.plc-scenarios-grid { display: grid; grid-template-columns: minmax(0,.9fr) minmax(380px,1.1fr); gap: 64px; align-items: center; }
+.plc-scenarios-grid img { width: 100%; min-height: 440px; object-fit: cover; border: 8px solid var(--surface-bg); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+.service-check-list { display: grid; gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }
+.service-check-list li { position: relative; padding: 14px 16px 14px 48px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface-bg); color: var(--heading-color); font-weight: 750; }
+.service-check-list li::before { content: "✓"; position: absolute; left: 16px; top: 13px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-color); color: #fff; font-size: 12px; }
+.service-faq-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.service-faq-grid article { padding: 26px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface-bg); box-shadow: var(--shadow-soft); }
+.service-faq-grid h3 { font-size: 19px; line-height: 1.25; }
+.service-faq-grid p { margin-top: 14px; color: var(--body-text-color); }
+
 .site-footer { padding: 28px 0; background: var(--home-bg); border-top: 1px solid var(--line); }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: calc(var(--base-font-size) - 2px); }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
@@ -276,7 +305,9 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent-color); b
   body.menu-open .main-nav { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .main-nav a { padding: 12px; font-size: var(--nav-font-size); }
   .hero { min-height: auto; padding-top: 54px; }
-  .hero-grid, .about-grid, .contact-grid, .detail-hero, .detail-content-grid, .service-page-hero-grid, .service-benefits-grid, .service-page-cta-inner { grid-template-columns: 1fr; }
+  .hero-grid, .about-grid, .contact-grid, .detail-hero, .detail-content-grid, .service-page-hero-grid, .service-benefits-grid, .service-page-cta-inner, .service-detail-hero-grid, .plc-scenarios-grid { grid-template-columns: 1fr; }
+  .service-detail-intro > div:first-child { grid-template-columns: 1fr; gap: 18px; }
+  .service-detail-grid, .service-faq-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .service-page-visual { max-width: 720px; }
   .service-page-badge { left: 20px; }
   .hero-image-card img { height: 420px; }
@@ -296,6 +327,9 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent-color); b
   .service-page-badge { position: static; margin-top: 12px; }
   .service-benefits-grid, .service-page-cta-inner { gap: 34px; }
   .service-benefit-list article { grid-template-columns: 46px 1fr; padding: 18px; gap: 14px; }
+  .service-detail-hero { padding: 52px 0 68px; }
+  .service-detail-visual img, .plc-scenarios-grid img { min-height: 300px; }
+  .service-detail-grid, .service-faq-grid { grid-template-columns: 1fr; }
   .lead-form { padding: 22px; border-radius: 26px; }
   .floating-wa { right: 12px; bottom: 12px; font-size: 0; padding: 12px 14px; }
   .floating-wa img { width: 22px; height: 22px; }

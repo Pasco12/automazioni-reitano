@@ -184,7 +184,7 @@
     const target = $('#services-list');
     if (!target) return;
 
-    target.innerHTML = services.map((service) => `
+    target.innerHTML = services.map((service, index) => `
       <article class="service-card reveal">
         <div class="service-icon" aria-hidden="true">${iconSvg(service.icon)}</div>
         <h3>${escapeHtml(service.title)}</h3>
@@ -192,6 +192,7 @@
         <ul class="clean-list">
           ${(service.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}
         </ul>
+        ${document.body.dataset.page === 'services' && index === 0 ? '<a class="service-card-link" href="/servizi/programmazione-plc">Approfondisci il servizio</a>' : ''}
       </article>
     `).join('');
 
