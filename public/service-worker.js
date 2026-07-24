@@ -1,4 +1,4 @@
-const CACHE_NAME = 'reitano-app-v1.0.9';
+const CACHE_NAME = 'reitano-app-v1.0.10';
 const APP_SHELL = [
   '/app',
   '/admin-app',
@@ -12,6 +12,7 @@ const APP_SHELL = [
   '/app-icon-192.png',
   '/app-icon-512.png'
 ];
+const APP_SHELL_PATHS = new Set(APP_SHELL);
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).catch(() => null));
@@ -27,18 +28,16 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-  if (url.pathname.startsWith('/api/')) return;
-  if (event.request.method !== 'GET') return;
+  if (event.request.method !== 'GET' || url.origin !== location.origin) return;
 
-  const mustBeFresh = event.request.mode === 'navigate'
-    || url.pathname === '/'
-    || url.pathname === '/js/app.js'
-    || url.pathname === '/css/style.css';
+  // Il service worker supporta solo le due web app. Le pagine pubbliche
+  // devono sempre usare i file aggiornati distribuiti dal server.
+  if (!APP_SHELL_PATHS.has(url.pathname)) return;
 
-  if (mustBeFresh) {
+  if (url.pathname === '/app' || url.pathname === '/admin-app') {
     event.respondWith(
       fetch(event.request).then((response) => {
-        if (response.ok && url.origin === location.origin) {
+        if (response.ok) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
         }
@@ -50,7 +49,7 @@ self.addEventListener('fetch', (event) => {
 
   event.respondWith(
     caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
-      if (response.ok && url.origin === location.origin) {
+      if (response.ok) {
         const clone = response.clone();
         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
       }
