@@ -182,6 +182,14 @@
   function renderServices() {
     const services = Array.isArray(siteContent.services) ? siteContent.services : [];
     const target = $('#services-list');
+    $$('[data-service-select]').forEach((select) => {
+      const current = select.value;
+      select.innerHTML = '<option value="">Seleziona un servizio</option>' + services.map((service) => (
+        `<option value="${escapeAttr(service.title)}">${escapeHtml(service.title)}</option>`
+      )).join('');
+      select.value = current;
+    });
+
     if (!target) return;
     const serviceLinks = {
       0: '/servizi/programmazione-plc',
@@ -204,13 +212,6 @@
       </article>
     `).join('');
 
-    $$('[data-service-select]').forEach((select) => {
-      const current = select.value;
-      select.innerHTML = '<option value="">Seleziona un servizio</option>' + services.map((service) => (
-        `<option value="${escapeAttr(service.title)}">${escapeHtml(service.title)}</option>`
-      )).join('');
-      select.value = current;
-    });
   }
 
   function renderHeroPhotos() {
@@ -412,7 +413,9 @@
 
     const address = [contact.address, contact.city].filter(Boolean).join(' - ');
     text('#contact-address', address);
-    href('#contact-map', contact.googleMapsUrl || '#contatti');
+    if (contact.googleMapsUrl) {
+      href('#contact-map', contact.googleMapsUrl);
+    }
 
     const waUrl = buildWhatsAppUrl();
     href('#header-whatsapp', waUrl);
