@@ -2174,6 +2174,7 @@ app.get('/sitemap.xml', async (req, res) => {
   const projects = Array.isArray(content.projects) ? content.projects : [];
   const urls = [
     { loc: 'https://www.automazionireitano.it/', priority: '1.0', changefreq: 'weekly' },
+    { loc: 'https://www.automazionireitano.it/servizi', priority: '0.9', changefreq: 'monthly' },
     ...projects.map((project) => ({
       loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
       priority: '0.7',
@@ -2184,6 +2185,10 @@ app.get('/sitemap.xml', async (req, res) => {
   const lastmod = (contentStat?.mtime || new Date()).toISOString().slice(0, 10);
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${xmlEscape(url.loc)}</loc><lastmod>${lastmod}</lastmod><changefreq>${url.changefreq}</changefreq><priority>${url.priority}</priority></url>`).join('\n')}\n</urlset>\n`;
   res.type('application/xml').send(xml);
+});
+
+app.get('/servizi', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'servizi.html'));
 });
 
 app.get('/lavori/:slug', async (req, res) => {

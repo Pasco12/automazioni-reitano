@@ -154,6 +154,7 @@
   }
 
   function applySectionOrder() {
+    if (document.body.dataset.page !== 'home') return;
     const order = String(siteContent.sections?.order || '').split(',').map((item) => item.trim()).filter(Boolean);
     const main = document.querySelector('main');
     if (!main || !order.length) return;
@@ -332,9 +333,11 @@
     const seo = siteContent.seo || {};
     const sections = siteContent.sections || {};
 
-    document.title = seo.title || brand.name || 'Reitano Automazioni Industriali & Service';
-    const meta = $('meta[name="description"]');
-    if (meta) meta.setAttribute('content', seo.description || brand.description || 'Automazioni industriali e service.');
+    if (document.body.dataset.page === 'home') {
+      document.title = seo.title || brand.name || 'Reitano Automazioni Industriali & Service';
+      const meta = $('meta[name="description"]');
+      if (meta) meta.setAttribute('content', seo.description || brand.description || 'Automazioni industriali e service.');
+    }
 
     const logoUrl = brand.logoUrl || '/logo.svg';
     $$('.brand-logo, .footer-brand img').forEach((img) => { img.src = logoUrl; });
