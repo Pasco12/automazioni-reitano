@@ -2175,6 +2175,7 @@ app.get('/sitemap.xml', async (req, res) => {
   const urls = [
     { loc: 'https://www.automazionireitano.it/', priority: '1.0', changefreq: 'weekly' },
     { loc: 'https://www.automazionireitano.it/servizi', priority: '0.9', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/servizi/programmazione-plc', priority: '0.8', changefreq: 'monthly' },
     ...projects.map((project) => ({
       loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
       priority: '0.7',
@@ -2189,6 +2190,10 @@ app.get('/sitemap.xml', async (req, res) => {
 
 app.get('/servizi', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'servizi.html'));
+});
+
+app.get('/servizi/programmazione-plc', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'servizio-plc.html'));
 });
 
 app.get('/lavori/:slug', async (req, res) => {
