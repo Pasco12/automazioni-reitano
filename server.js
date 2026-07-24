@@ -2179,6 +2179,7 @@ app.get('/sitemap.xml', async (req, res) => {
     { loc: 'https://www.automazionireitano.it/servizi/impianti-elettrici-industriali', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/quadri-elettrici', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/rifacimenti-revamping', priority: '0.8', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/servizi/diagnostica-riparazioni', priority: '0.8', changefreq: 'monthly' },
     ...projects.map((project) => ({
       loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
       priority: '0.7',
@@ -2209,6 +2210,10 @@ app.get('/servizi/quadri-elettrici', (req, res) => {
 
 app.get('/servizi/rifacimenti-revamping', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'servizio-rifacimenti-revamping.html'));
+});
+
+app.get('/servizi/diagnostica-riparazioni', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'servizio-diagnostica-riparazioni.html'));
 });
 
 app.get('/lavori/:slug', async (req, res) => {

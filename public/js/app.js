@@ -187,7 +187,8 @@
       0: '/servizi/programmazione-plc',
       1: '/servizi/impianti-elettrici-industriali',
       2: '/servizi/quadri-elettrici',
-      3: '/servizi/rifacimenti-revamping'
+      3: '/servizi/rifacimenti-revamping',
+      4: '/servizi/diagnostica-riparazioni'
     };
 
     target.innerHTML = services.map((service, index) => `
@@ -237,7 +238,8 @@
       0: '/servizi/programmazione-plc',
       1: '/servizi/impianti-elettrici-industriali',
       2: '/servizi/quadri-elettrici',
-      3: '/servizi/rifacimenti-revamping'
+      3: '/servizi/rifacimenti-revamping',
+      4: '/servizi/diagnostica-riparazioni'
     };
 
     const graphics = [
