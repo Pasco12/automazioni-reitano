@@ -185,7 +185,8 @@
     if (!target) return;
     const serviceLinks = {
       0: '/servizi/programmazione-plc',
-      1: '/servizi/impianti-elettrici-industriali'
+      1: '/servizi/impianti-elettrici-industriali',
+      2: '/servizi/quadri-elettrici'
     };
 
     target.innerHTML = services.map((service, index) => `
@@ -233,7 +234,8 @@
     if (!target) return;
     const serviceLinks = {
       0: '/servizi/programmazione-plc',
-      1: '/servizi/impianti-elettrici-industriali'
+      1: '/servizi/impianti-elettrici-industriali',
+      2: '/servizi/quadri-elettrici'
     };
 
     const graphics = [

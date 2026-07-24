@@ -2177,6 +2177,7 @@ app.get('/sitemap.xml', async (req, res) => {
     { loc: 'https://www.automazionireitano.it/servizi', priority: '0.9', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/programmazione-plc', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/impianti-elettrici-industriali', priority: '0.8', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/servizi/quadri-elettrici', priority: '0.8', changefreq: 'monthly' },
     ...projects.map((project) => ({
       loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
       priority: '0.7',
@@ -2199,6 +2200,10 @@ app.get('/servizi/programmazione-plc', (req, res) => {
 
 app.get('/servizi/impianti-elettrici-industriali', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'servizio-impianti-elettrici.html'));
+});
+
+app.get('/servizi/quadri-elettrici', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'servizio-quadri-elettrici.html'));
 });
 
 app.get('/lavori/:slug', async (req, res) => {
