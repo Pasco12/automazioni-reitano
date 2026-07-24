@@ -188,7 +188,8 @@
       1: '/servizi/impianti-elettrici-industriali',
       2: '/servizi/quadri-elettrici',
       3: '/servizi/rifacimenti-revamping',
-      4: '/servizi/diagnostica-riparazioni'
+      4: '/servizi/diagnostica-riparazioni',
+      5: '/servizi/automazione-industriale'
     };
 
     target.innerHTML = services.map((service, index) => `
@@ -239,7 +240,8 @@
       1: '/servizi/impianti-elettrici-industriali',
       2: '/servizi/quadri-elettrici',
       3: '/servizi/rifacimenti-revamping',
-      4: '/servizi/diagnostica-riparazioni'
+      4: '/servizi/diagnostica-riparazioni',
+      5: '/servizi/automazione-industriale'
     };
 
     const graphics = [
