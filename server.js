@@ -2173,6 +2173,7 @@ app.get('/sitemap.xml', async (req, res) => {
   const urls = [
     { loc: 'https://www.automazionireitano.it/', priority: '1.0', changefreq: 'weekly' },
     { loc: 'https://www.automazionireitano.it/servizi', priority: '0.9', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/contatti', priority: '0.9', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/programmazione-plc', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/impianti-elettrici-industriali', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/quadri-elettrici', priority: '0.8', changefreq: 'monthly' },
@@ -2193,6 +2194,10 @@ app.get('/sitemap.xml', async (req, res) => {
 
 app.get('/servizi', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'servizi.html'));
+});
+
+app.get('/contatti', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'contatti.html'));
 });
 
 app.get('/servizi/programmazione-plc', (req, res) => {
