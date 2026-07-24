@@ -183,6 +183,10 @@
     const services = Array.isArray(siteContent.services) ? siteContent.services : [];
     const target = $('#services-list');
     if (!target) return;
+    const serviceLinks = {
+      0: '/servizi/programmazione-plc',
+      1: '/servizi/impianti-elettrici-industriali'
+    };
 
     target.innerHTML = services.map((service, index) => `
       <article class="service-card reveal">
@@ -192,7 +196,7 @@
         <ul class="clean-list">
           ${(service.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}
         </ul>
-        ${['home', 'services'].includes(document.body.dataset.page) && index === 0 ? '<a class="service-card-link" href="/servizi/programmazione-plc">Approfondisci il servizio</a>' : ''}
+        ${['home', 'services'].includes(document.body.dataset.page) && serviceLinks[index] ? `<a class="service-card-link" href="${serviceLinks[index]}">Approfondisci il servizio</a>` : ''}
       </article>
     `).join('');
 
@@ -227,6 +231,10 @@
     const services = Array.isArray(siteContent.services) ? siteContent.services : [];
     const target = $('#work-grid') || $('#work-strip');
     if (!target) return;
+    const serviceLinks = {
+      0: '/servizi/programmazione-plc',
+      1: '/servizi/impianti-elettrici-industriali'
+    };
 
     const graphics = [
       '/img/project-plc.svg',
@@ -249,7 +257,7 @@
               <span class="work-meta">Competenza</span>
               <h3>${escapeHtml(service.title)}</h3>
               <p>${escapeHtml(service.description)}</p>
-              <a class="work-open" href="${index === 0 ? '/servizi/programmazione-plc' : '#contatti'}">${index === 0 ? 'Scopri il servizio' : 'Richiedi informazioni'}</a>
+              <a class="work-open" href="${serviceLinks[index] || '#contatti'}">${serviceLinks[index] ? 'Scopri il servizio' : 'Richiedi informazioni'}</a>
             </figcaption>
           </figure>
         </article>
