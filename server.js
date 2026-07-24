@@ -2117,10 +2117,8 @@ function renderWorkPage(template, content, project) {
       },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: contact.address || 'Via Garibaldi 200',
         addressLocality: 'Gioia Tauro',
         addressRegion: 'RC',
-        postalCode: contact.postalCode || '89013',
         addressCountry: 'IT'
       },
       url: 'https://www.automazionireitano.it/'
