@@ -10,13 +10,13 @@
       whatsapp: '+39 351 912 5291',
       email: 'reitanopasquale12@gmail.com',
       pec: 'reitanopasquale2026@pec.it',
-      address: 'Via Garibaldi 200',
+      address: '',
       city: 'Gioia Tauro (RC) • Calabria',
-      postalCode: '89013',
+      postalCode: '',
       vat: 'P.IVA 03365930803 • REA RC-227010',
       vatNumber: '03365930803',
       rea: 'RC-227010',
-      hours: 'Lun - Ven / 08:00 - 18:00'
+      hours: 'Lun - Sab / 08:00 - 19:00'
     },
     sections: {},
     services: [],
