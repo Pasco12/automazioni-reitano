@@ -186,7 +186,8 @@
     const serviceLinks = {
       0: '/servizi/programmazione-plc',
       1: '/servizi/impianti-elettrici-industriali',
-      2: '/servizi/quadri-elettrici'
+      2: '/servizi/quadri-elettrici',
+      3: '/servizi/rifacimenti-revamping'
     };
 
     target.innerHTML = services.map((service, index) => `
@@ -235,7 +236,8 @@
     const serviceLinks = {
       0: '/servizi/programmazione-plc',
       1: '/servizi/impianti-elettrici-industriali',
-      2: '/servizi/quadri-elettrici'
+      2: '/servizi/quadri-elettrici',
+      3: '/servizi/rifacimenti-revamping'
     };
 
     const graphics = [
