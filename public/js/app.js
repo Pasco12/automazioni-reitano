@@ -192,7 +192,7 @@
         <ul class="clean-list">
           ${(service.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}
         </ul>
-        ${document.body.dataset.page === 'services' && index === 0 ? '<a class="service-card-link" href="/servizi/programmazione-plc">Approfondisci il servizio</a>' : ''}
+        ${['home', 'services'].includes(document.body.dataset.page) && index === 0 ? '<a class="service-card-link" href="/servizi/programmazione-plc">Approfondisci il servizio</a>' : ''}
       </article>
     `).join('');
 
@@ -249,7 +249,7 @@
               <span class="work-meta">Competenza</span>
               <h3>${escapeHtml(service.title)}</h3>
               <p>${escapeHtml(service.description)}</p>
-              <a class="work-open" href="#contatti">Richiedi informazioni</a>
+              <a class="work-open" href="${index === 0 ? '/servizi/programmazione-plc' : '#contatti'}">${index === 0 ? 'Scopri il servizio' : 'Richiedi informazioni'}</a>
             </figcaption>
           </figure>
         </article>
