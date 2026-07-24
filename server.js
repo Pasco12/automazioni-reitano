@@ -2225,7 +2225,17 @@ app.get('/lavori/:slug', async (req, res) => {
 
 app.use(express.static(PUBLIC_DIR, {
   maxAge: '1h',
-  etag: true
+  etag: true,
+  setHeaders: (res, filePath) => {
+    const normalizedPath = filePath.replaceAll('\\', '/');
+    if (normalizedPath.endsWith('.html') || normalizedPath.endsWith('/service-worker.js')) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      return;
+    }
+    if (normalizedPath.endsWith('/js/app.js') || normalizedPath.endsWith('/css/style.css')) {
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    }
+  }
 }));
 
 app.get('*', (req, res) => {
