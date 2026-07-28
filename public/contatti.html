@@ -19,10 +19,23 @@
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"ContactPage",
-    "name":"Contatti Reitano Automazioni",
-    "url":"https://www.automazionireitano.it/contatti",
-    "description":"Pagina di contatto per richieste su automazione industriale, PLC, quadri elettrici, impianti, revamping e assistenza."
+    "@graph":[
+      {
+        "@type":"ContactPage",
+        "@id":"https://www.automazionireitano.it/contatti#webpage",
+        "name":"Contatti Reitano Automazioni",
+        "url":"https://www.automazionireitano.it/contatti",
+        "description":"Pagina di contatto per richieste su automazione industriale, PLC, quadri elettrici, impianti, revamping e assistenza.",
+        "about":{"@id":"https://www.automazionireitano.it/#business"}
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.automazionireitano.it/"},
+          {"@type":"ListItem","position":2,"name":"Contatti","item":"https://www.automazionireitano.it/contatti"}
+        ]
+      }
+    ]
   }
   </script>
 </head>

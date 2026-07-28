@@ -19,16 +19,27 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Servizi di Reitano Automazioni",
-    "url": "https://www.automazionireitano.it/servizi",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Programmazione PLC"},
-      {"@type":"ListItem","position":2,"name":"Impianti elettrici industriali"},
-      {"@type":"ListItem","position":3,"name":"Quadri elettrici"},
-      {"@type":"ListItem","position":4,"name":"Rifacimenti e revamping"},
-      {"@type":"ListItem","position":5,"name":"Diagnostica e riparazioni"},
-      {"@type":"ListItem","position":6,"name":"Automazione industriale"}
+    "@graph": [
+      {
+        "@type": "ItemList",
+        "name": "Servizi di Reitano Automazioni",
+        "url": "https://www.automazionireitano.it/servizi",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Programmazione PLC","url":"https://www.automazionireitano.it/servizi/programmazione-plc"},
+          {"@type":"ListItem","position":2,"name":"Impianti elettrici industriali","url":"https://www.automazionireitano.it/servizi/impianti-elettrici-industriali"},
+          {"@type":"ListItem","position":3,"name":"Quadri elettrici","url":"https://www.automazionireitano.it/servizi/quadri-elettrici"},
+          {"@type":"ListItem","position":4,"name":"Rifacimenti e revamping","url":"https://www.automazionireitano.it/servizi/rifacimenti-revamping"},
+          {"@type":"ListItem","position":5,"name":"Diagnostica e riparazioni","url":"https://www.automazionireitano.it/servizi/diagnostica-riparazioni"},
+          {"@type":"ListItem","position":6,"name":"Automazione industriale","url":"https://www.automazionireitano.it/servizi/automazione-industriale"}
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.automazionireitano.it/"},
+          {"@type":"ListItem","position":2,"name":"Servizi","item":"https://www.automazionireitano.it/servizi"}
+        ]
+      }
     ]
   }
   </script>
