@@ -2099,30 +2099,41 @@ function renderWorkPage(template, content, project) {
   const bullets = Array.isArray(project.bullets) ? project.bullets : [];
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: project.title,
-    description,
-    url: canonical,
-    image,
-    creator: {
-      '@type': 'LocalBusiness',
-      name: brand.name || 'Reitano Automazioni Industriali & Service',
-      telephone: contact.phone || undefined,
-      email: contact.email || undefined,
-      vatID: contact.vatNumber ? `IT${contact.vatNumber}` : 'IT03365930803',
-      identifier: {
-        '@type': 'PropertyValue',
-        propertyID: 'REA',
-        value: contact.rea || 'RC-227010'
+    '@graph': [
+      {
+        '@type': 'CreativeWork',
+        name: project.title,
+        description,
+        url: canonical,
+        image,
+        creator: {
+          '@id': 'https://www.automazionireitano.it/#business'
+        }
       },
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Gioia Tauro',
-        addressRegion: 'RC',
-        addressCountry: 'IT'
-      },
-      url: 'https://www.automazionireitano.it/'
-    }
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.automazionireitano.it/'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Lavori',
+            item: 'https://www.automazionireitano.it/#lavori'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: project.title,
+            item: canonical
+          }
+        ]
+      }
+    ]
   };
   const head = `
   <link rel="canonical" href="${htmlEscape(canonical)}">
