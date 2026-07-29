@@ -2268,6 +2268,10 @@ app.use(express.static(PUBLIC_DIR, {
     }
     if (normalizedPath.endsWith('/js/app.js') || normalizedPath.endsWith('/css/style.css')) {
       res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+      return;
+    }
+    if (/\.(?:avif|gif|jpe?g|png|svg|webp|woff2?)$/i.test(normalizedPath)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800');
     }
   }
 }));
