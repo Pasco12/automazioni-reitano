@@ -32,7 +32,9 @@
 
   function text(selector, value) {
     const el = $(selector);
-    if (el) el.textContent = value || '';
+    if (el && value !== undefined && value !== null && value !== '') {
+      el.textContent = value;
+    }
   }
 
   function href(selector, value) {
@@ -218,8 +220,8 @@
     const target = $('#hero-photo-stack');
     const heroImage = $('#hero-main-image');
     if (heroImage) {
-      heroImage.src = '/img/hero-automazione-neutra.webp';
-      heroImage.alt = 'Rappresentazione concettuale di una soluzione di automazione industriale';
+      heroImage.src = '/img/industrial-automation-overview.webp';
+      heroImage.alt = 'Quadro elettrico di automazione accanto a una linea industriale';
     }
 
     if (!target) return;
@@ -357,15 +359,15 @@
       if (meta) meta.setAttribute('content', seo.description || brand.description || 'Automazioni industriali e service.');
     }
 
-    const logoUrl = brand.logoUrl || '/logo.svg';
+    const logoUrl = brand.logoUrl || '/logo-brand.png';
     $$('.brand-logo, .footer-brand img').forEach((img) => { img.src = logoUrl; });
     text('#brand-short', brand.shortName || brand.name);
     text('#brand-tagline', brand.tagline);
     text('#hero-kicker', hero.kicker);
     text('#hero-title', hero.title);
     text('#hero-subtitle', hero.subtitle);
-    text('#hero-primary', hero.primaryCta || 'Richiedi preventivo');
-    text('#hero-secondary', hero.secondaryCta || 'Vedi i lavori');
+    text('#hero-primary', hero.primaryCta);
+    text('#hero-secondary', hero.secondaryCta);
 
     text('#works-kicker', sections.worksKicker);
     text('#works-title', sections.worksTitle);
@@ -549,16 +551,26 @@
 
   function setupMenu() {
     const toggle = $('.menu-toggle');
-    if (!toggle) return;
+    const nav = $('.main-nav');
+    if (!toggle || !nav) return;
+    if (!nav.id) nav.id = 'main-navigation';
+    toggle.setAttribute('aria-controls', nav.id);
+    const closeMenu = () => {
+      document.body.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
     toggle.addEventListener('click', () => {
       const opened = document.body.classList.toggle('menu-open');
       toggle.setAttribute('aria-expanded', String(opened));
     });
     $$('.main-nav a').forEach((link) => {
-      link.addEventListener('click', () => {
-        document.body.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && document.body.classList.contains('menu-open')) {
+        closeMenu();
+        toggle.focus();
+      }
     });
   }
 
