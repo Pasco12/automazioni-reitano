@@ -320,12 +320,12 @@
     }
 
     target.innerHTML = projects.map((project, index) => {
-      const image = project.image || '/img/project-automazione.svg';
+      const image = project.image || '/img/industrial-automation-overview.webp';
       const slug = project.slug || slugify(project.title || `lavoro-${index + 1}`);
       const gallery = Array.isArray(project.gallery) ? project.gallery : [];
       const galleryHtml = gallery.length ? gallery.map((url, galleryIndex) => `
         <div class="gallery-admin-item">
-          <img src="${escapeAttr(url)}" alt="Gallery ${galleryIndex + 1}" onerror="this.src='/img/project-automazione.svg'">
+          <img src="${escapeAttr(url)}" alt="Gallery ${galleryIndex + 1}" onerror="this.src='/img/industrial-automation-overview.webp'">
           <button class="small-btn danger" data-remove-gallery="${index}:${galleryIndex}" type="button">Rimuovi</button>
         </div>
       `).join('') : '<div class="empty mini-empty">Nessuna immagine aggiuntiva.</div>';
@@ -342,7 +342,7 @@
             </div>
           </header>
           <div class="image-tools">
-            <div class="preview"><img src="${escapeAttr(image)}" alt="Anteprima immagine" onerror="this.src='/img/project-automazione.svg'"></div>
+            <div class="preview"><img src="${escapeAttr(image)}" alt="Anteprima immagine" onerror="this.src='/img/industrial-automation-overview.webp'"></div>
             <div class="field-grid one">
               ${field('Percorso immagine principale', `projects.${index}.image`, { help: 'Esempio: /uploads/foto.jpg oppure /uploads/lavori/lavoro-1.jpg' })}
               <label>Carica nuova immagine principale
@@ -707,7 +707,7 @@
         year: 'Da modificare',
         description: 'Descrizione breve lavoro',
         detailedDescription: 'Descrizione dettagliata del lavoro, modificabile dal pannello admin.',
-        image: '/img/project-automazione.svg',
+        image: '/img/industrial-automation-overview.webp',
         gallery: [],
         bullets: ['Punto 1', 'Punto 2']
       });

@@ -2150,7 +2150,7 @@ function renderWorkPage(template, content, project) {
   const body = `
       <a class="back-link" href="/#lavori">← Torna a tutti i lavori</a>
       <section class="detail-hero reveal visible">
-        <div class="detail-cover"><img src="${htmlEscape(project.image || '/img/project-automazione.svg')}" alt="${htmlEscape(project.title)}" width="1200" height="800"></div>
+        <div class="detail-cover"><img src="${htmlEscape(project.image || '/img/industrial-automation-overview.webp')}" alt="${htmlEscape(project.title)}" width="1400" height="788"></div>
         <article class="detail-card">
           <div>
             <p class="eyebrow">${htmlEscape(project.category || 'Lavoro')}</p>
