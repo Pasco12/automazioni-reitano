@@ -113,7 +113,7 @@
         <h1>Lavoro non disponibile.</h1>
         <p style="margin-top:14px;color:var(--muted)">La scheda richiesta non esiste o è stata modificata dal pannello admin.</p>
         <div class="hero-actions" style="justify-content:center">
-          <a class="btn" href="/#lavori">Torna ai lavori</a>
+          <a class="btn" href="/lavori">Torna ai lavori</a>
           <a class="btn btn-soft" href="/#preventivo">Richiedi preventivo</a>
         </div>
       </section>
@@ -136,7 +136,7 @@
     const message = `Ciao ${siteContent.brand?.shortName || 'Reitano Automazioni'}, vorrei informazioni sul lavoro: ${project.title}.`;
 
     target.innerHTML = `
-      <a class="back-link" href="/#lavori">← Torna a tutti i lavori</a>
+      <a class="back-link" href="/lavori">← Torna a tutti i lavori</a>
 
       <section class="detail-hero reveal">
         <div class="detail-cover">

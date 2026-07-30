@@ -48,9 +48,9 @@
     "processKicker": "Processo",
     "processTitle": "Come lavoriamo",
     "processText": "Un metodo semplice: ascolto, sopralluogo, preventivo e realizzazione con test finale.",
-    "worksKicker": "Competenze",
-    "worksTitle": "Soluzioni per l’industria",
-    "worksText": "Competenze tecniche per affrontare programmazione, cablaggio, diagnostica, manutenzione e aggiornamento di macchine e impianti industriali.",
+    "worksKicker": "Lavori realizzati",
+    "worksTitle": "Casi studio dal campo",
+    "worksText": "Una selezione di interventi reali su quadri, macchine e impianti industriali. Le fotografie documentano lavorazioni effettivamente eseguite.",
     "reviewsKicker": "Recensioni",
     "reviewsTitle": "Dicono di noi",
     "reviewsText": "Esperienze e valutazioni condivise dai clienti dopo gli interventi.",
@@ -147,6 +147,7 @@
   "projects": [
     {
       "title": "Quadro automazione con inverter",
+      "featured": true,
       "category": "Quadri elettrici",
       "description": "Realizzazione e cablaggio di quadro per gestione macchina con inverter, protezioni e moduli di comando.",
       "image": "/uploads/lavori/lavoro-1.jpg",
@@ -164,6 +165,7 @@
     },
     {
       "title": "Diagnostica contattori e comandi",
+      "featured": true,
       "category": "Service",
       "description": "Verifica di contattori, morsettiere e collegamenti per individuare anomalie e ripristinare il corretto funzionamento.",
       "image": "/uploads/lavori/lavoro-2.jpg",
@@ -300,6 +302,7 @@
     },
     {
       "title": "Quadro comando impianto industriale",
+      "featured": true,
       "category": "Quadri elettrici",
       "description": "Quadro di automazione con sezioni di potenza e controllo per gestione di utenze, motori e segnali macchina.",
       "image": "/uploads/lavori/lavoro-10.jpg",
@@ -317,6 +320,7 @@
     },
     {
       "title": "Linea automatizzata in officina",
+      "featured": true,
       "category": "Automazione",
       "description": "Installazione e supporto tecnico su linea produttiva con quadro di comando, nastri, motori e organi di movimentazione.",
       "image": "/uploads/lavori/lavoro-11.jpg",
@@ -402,6 +406,7 @@
     },
     {
       "title": "Diagnostica quadro PLC e azionamenti",
+      "featured": true,
       "category": "PLC",
       "description": "Controllo quadro macchina con PLC, relè, azionamenti e collegamenti di segnale per attività di diagnostica e service.",
       "image": "/uploads/lavori/lavoro-17.jpg",
@@ -419,6 +424,7 @@
     },
     {
       "title": "Impianto industriale con nastri e protezioni",
+      "featured": true,
       "category": "Automazione",
       "description": "Supporto su impianto industriale completo con movimentazioni, protezioni perimetrali e sistemi di comando.",
       "image": "/uploads/lavori/lavoro-18.jpg",

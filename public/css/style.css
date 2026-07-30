@@ -156,6 +156,7 @@ p { margin: 0; }
 .step p { margin-top: 10px; color: var(--body-text-color); }
 
 .portfolio-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.section-actions { display: flex; justify-content: center; margin-top: 30px; }
 .work-card { display: block; overflow: hidden; border-radius: 28px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
 .work-card figure { margin: 0; }
 .work-image { position: relative; overflow: hidden; aspect-ratio: 4/3; background: #f4f4f4; }
