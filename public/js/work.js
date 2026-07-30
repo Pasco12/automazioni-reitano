@@ -130,7 +130,7 @@
     const meta = $('meta[name="description"]');
     if (meta) meta.setAttribute('content', metaDescription);
 
-    const mainImage = project.image || '/img/project-automazione.svg';
+    const mainImage = project.image || '/img/industrial-automation-overview.webp';
     const gallery = [mainImage, ...(Array.isArray(project.gallery) ? project.gallery : [])].filter(Boolean);
     const bullets = Array.isArray(project.bullets) ? project.bullets : [];
     const message = `Ciao ${siteContent.brand?.shortName || 'Reitano Automazioni'}, vorrei informazioni sul lavoro: ${project.title}.`;
@@ -140,7 +140,7 @@
 
       <section class="detail-hero reveal">
         <div class="detail-cover">
-          <img src="${escapeAttr(mainImage)}" alt="${escapeAttr(project.title)}" onerror="this.src='/img/project-automazione.svg'">
+          <img src="${escapeAttr(mainImage)}" alt="${escapeAttr(project.title)}" onerror="this.src='/img/industrial-automation-overview.webp'">
         </div>
         <article class="detail-card">
           <div>
@@ -187,7 +187,7 @@
         <div class="detail-gallery">
           ${gallery.map((image, index) => `
             <a href="${escapeAttr(image)}" target="_blank" rel="noopener" aria-label="Apri immagine ${index + 1}">
-              <img src="${escapeAttr(image)}" alt="${escapeAttr(project.title)} - immagine ${index + 1}" loading="lazy" onerror="this.src='/img/project-automazione.svg'">
+              <img src="${escapeAttr(image)}" alt="${escapeAttr(project.title)} - immagine ${index + 1}" loading="lazy" onerror="this.src='/img/industrial-automation-overview.webp'">
             </a>
           `).join('')}
         </div>

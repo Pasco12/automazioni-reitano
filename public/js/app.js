@@ -226,11 +226,11 @@
 
     if (!target) return;
     target.innerHTML = [
-      ['/img/project-plc.svg', 'Programmazione PLC'],
-      ['/img/project-quadro.svg', 'Quadri elettrici'],
-      ['/img/project-service.svg', 'Assistenza industriale']
+      ['/img/plc-programming-workstation.webp', 'Programmazione PLC'],
+      ['/img/electrical-panel-workshop.webp', 'Quadri elettrici'],
+      ['/img/industrial-diagnostics-revamping.webp', 'Assistenza industriale']
     ].map(([image, label]) => `
-      <img src="${image}" alt="Grafica: ${label}" loading="eager">
+      <img src="${image}" alt="Immagine relativa a ${label}" width="1400" height="788" loading="eager">
     `).join('');
   }
 
@@ -248,12 +248,12 @@
     };
 
     const graphics = [
-      '/img/project-plc.svg',
-      '/img/project-impianti.svg',
-      '/img/project-quadro.svg',
-      '/img/project-revamping.svg',
-      '/img/project-service.svg',
-      '/img/project-automazione.svg'
+      '/img/plc-programming-workstation.webp',
+      '/img/industrial-automation-overview.webp',
+      '/img/electrical-panel-workshop.webp',
+      '/img/industrial-diagnostics-revamping.webp',
+      '/img/industrial-diagnostics-revamping.webp',
+      '/img/industrial-automation-cell.webp'
     ];
 
     target.innerHTML = services.map((service, index) => {
@@ -262,7 +262,7 @@
         <article class="work-card capability-card reveal">
           <figure>
             <div class="work-image">
-              <img src="${image}" alt="Grafica: ${escapeAttr(service.title)}" loading="lazy">
+              <img src="${image}" alt="Immagine relativa a ${escapeAttr(service.title)}" width="1400" height="788" loading="lazy">
             </div>
             <figcaption class="work-body">
               <span class="work-meta">Competenza</span>
