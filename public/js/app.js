@@ -235,40 +235,32 @@
   }
 
   function renderProjects() {
-    const services = Array.isArray(siteContent.services) ? siteContent.services : [];
+    const projects = Array.isArray(siteContent.projects) ? siteContent.projects : [];
     const target = $('#work-grid') || $('#work-strip');
     if (!target) return;
-    const serviceLinks = {
-      0: '/servizi/programmazione-plc',
-      1: '/servizi/impianti-elettrici-industriali',
-      2: '/servizi/quadri-elettrici',
-      3: '/servizi/rifacimenti-revamping',
-      4: '/servizi/diagnostica-riparazioni',
-      5: '/servizi/automazione-industriale'
-    };
+    const isArchive = document.body.dataset.page === 'works';
+    const visibleProjects = isArchive
+      ? projects.filter((project) => project.indexable !== false)
+      : projects.filter((project) => project.featured === true).slice(0, 6);
+    const selectedProjects = visibleProjects.length
+      ? visibleProjects
+      : projects.filter((project) => project.indexable !== false).slice(0, isArchive ? projects.length : 6);
 
-    const graphics = [
-      '/img/plc-programming-workstation.webp',
-      '/img/industrial-automation-overview.webp',
-      '/img/electrical-panel-workshop.webp',
-      '/img/industrial-diagnostics-revamping.webp',
-      '/img/industrial-diagnostics-revamping.webp',
-      '/img/industrial-automation-cell.webp'
-    ];
-
-    target.innerHTML = services.map((service, index) => {
-      const image = graphics[index % graphics.length];
+    target.innerHTML = selectedProjects.map((project) => {
+      const slug = project.slug || slugify(project.title);
+      const image = project.image || '/img/industrial-automation-overview.webp';
       return `
-        <article class="work-card capability-card reveal">
+        <article class="work-card reveal">
           <figure>
             <div class="work-image">
-              <img src="${image}" alt="Immagine relativa a ${escapeAttr(service.title)}" width="1400" height="788" loading="lazy">
+              <img src="${escapeAttr(image)}" alt="${escapeAttr(project.title)}" width="1200" height="900" loading="lazy">
+              <span class="image-click-badge">Caso studio</span>
             </div>
             <figcaption class="work-body">
-              <span class="work-meta">Competenza</span>
-              <h3>${escapeHtml(service.title)}</h3>
-              <p>${escapeHtml(service.description)}</p>
-              <a class="work-open" href="${serviceLinks[index] || '#contatti'}">${serviceLinks[index] ? 'Scopri il servizio' : 'Richiedi informazioni'}</a>
+              <span class="work-meta">${escapeHtml(project.category || 'Lavoro realizzato')}</span>
+              <h3>${escapeHtml(project.title)}</h3>
+              <p>${escapeHtml(project.description || '')}</p>
+              <a class="work-open" href="/lavori/${encodeURIComponent(slug)}">Apri il caso studio</a>
             </figcaption>
           </figure>
         </article>

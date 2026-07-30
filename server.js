@@ -2123,7 +2123,7 @@ function renderWorkPage(template, content, project) {
             '@type': 'ListItem',
             position: 2,
             name: 'Lavori',
-            item: 'https://www.automazionireitano.it/#lavori'
+            item: 'https://www.automazionireitano.it/lavori'
           },
           {
             '@type': 'ListItem',
@@ -2148,7 +2148,7 @@ function renderWorkPage(template, content, project) {
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`;
   const body = `
-      <a class="back-link" href="/#lavori">← Torna a tutti i lavori</a>
+      <a class="back-link" href="/lavori">← Torna a tutti i lavori</a>
       <section class="detail-hero reveal visible">
         <div class="detail-cover"><img src="${htmlEscape(project.image || '/img/industrial-automation-overview.webp')}" alt="${htmlEscape(project.title)}" width="1400" height="788"></div>
         <article class="detail-card">
@@ -2180,12 +2180,15 @@ function renderWorkPage(template, content, project) {
 
 app.get('/sitemap.xml', async (req, res) => {
   const content = await readJson(CONTENT_FILE, {});
-  const projects = Array.isArray(content.projects) ? content.projects : [];
+  const projects = Array.isArray(content.projects)
+    ? content.projects.filter((project) => project.indexable !== false)
+    : [];
   const urls = [
     { loc: 'https://www.automazionireitano.it/', priority: '1.0', changefreq: 'weekly' },
     { loc: 'https://www.automazionireitano.it/servizi', priority: '0.9', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/contatti', priority: '0.9', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/chi-siamo', priority: '0.8', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/lavori', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/programmazione-plc', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/impianti-elettrici-industriali', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/quadri-elettrici', priority: '0.8', changefreq: 'monthly' },
@@ -2240,18 +2243,23 @@ app.get('/servizi/automazione-industriale', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'servizio-automazione-industriale.html'));
 });
 
+app.get('/lavori', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'lavori.html'));
+});
+
 app.get('/lavori/:slug', async (req, res) => {
   const [content, template] = await Promise.all([
     readJson(CONTENT_FILE, {}),
     fsp.readFile(path.join(PUBLIC_DIR, 'work.html'), 'utf8')
   ]);
   const project = (Array.isArray(content.projects) ? content.projects : [])
+    .filter((item) => item.indexable !== false)
     .find((item) => projectSlug(item) === req.params.slug);
   if (!project) {
     const notFound = template
       .replace(/<title>[\s\S]*?<\/title>/i, '<title>Lavoro non trovato | Reitano Automazioni</title>')
       .replace('</head>', '<meta name="robots" content="noindex,follow">\n</head>')
-      .replace(/<div class="container" id="work-detail">[\s\S]*?<\/div>\s*<\/main>/i, '<div class="container" id="work-detail"><section class="not-found"><p class="eyebrow">Pagina non trovata</p><h1>Questo lavoro non è disponibile.</h1><p>Puoi tornare al portfolio o richiedere informazioni su un intervento simile.</p><div class="hero-actions"><a class="btn" href="/#lavori">Torna ai lavori</a><a class="btn btn-soft" href="/#contatti">Contatti</a></div></section></div></main>');
+      .replace(/<div class="container" id="work-detail">[\s\S]*?<\/div>\s*<\/main>/i, '<div class="container" id="work-detail"><section class="not-found"><p class="eyebrow">Pagina non trovata</p><h1>Questo lavoro non è disponibile.</h1><p>Puoi tornare al portfolio o richiedere informazioni su un intervento simile.</p><div class="hero-actions"><a class="btn" href="/lavori">Torna ai lavori</a><a class="btn btn-soft" href="/contatti">Contatti</a></div></section></div></main>');
     return res.status(404).send(notFound);
   }
   res.send(renderWorkPage(template, content, project));
