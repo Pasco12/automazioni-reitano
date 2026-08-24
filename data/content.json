@@ -515,23 +515,7 @@
       }
     ]
   },
-  "testimonials": [
-    {
-      "name": "Marco R.",
-      "role": "Responsabile stabilimento",
-      "text": "Professionista serio e competente. Intervento rapido su automazione e quadro macchina, con produzione ripresa senza intoppi."
-    },
-    {
-      "name": "Giuseppe M.",
-      "role": "Titolare azienda",
-      "text": "Quadro elettrico sistemato con ordine e precisione. Lavoro pulito, spiegazioni chiare e tempi rispettati."
-    },
-    {
-      "name": "Salvatore P.",
-      "role": "Responsabile tecnico",
-      "text": "Disponibile e risolutivo su guasto urgente. Diagnosi precisa e ripristino dell’impianto in tempi brevi."
-    }
-  ],
+  "testimonials": [],
   "theme": {
     "homeBgColor": "#ffffff",
     "surfaceColor": "#ffffff",
