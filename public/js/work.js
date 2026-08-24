@@ -114,7 +114,7 @@
         <p style="margin-top:14px;color:var(--muted)">La scheda richiesta non esiste o è stata modificata dal pannello admin.</p>
         <div class="hero-actions" style="justify-content:center">
           <a class="btn" href="/lavori">Torna ai lavori</a>
-          <a class="btn btn-soft" href="/#preventivo">Richiedi preventivo</a>
+          <a class="btn btn-soft" href="/contatti">Parlaci della macchina o dell’impianto</a>
         </div>
       </section>
     `;
@@ -156,7 +156,7 @@
           </div>
           <div class="hero-actions">
             <a class="btn" href="${escapeAttr(buildWhatsAppUrl(message))}" target="_blank" rel="noopener">Chiedi un lavoro simile</a>
-            <a class="btn btn-soft" href="/#preventivo">Richiedi preventivo</a>
+            <a class="btn btn-soft" href="/contatti">Descrivi il progetto da automatizzare</a>
           </div>
         </article>
       </section>
