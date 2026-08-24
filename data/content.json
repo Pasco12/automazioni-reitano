@@ -1,13 +1,13 @@
 {
   "seo": {
-    "title": "Automazione industriale in Calabria | Reitano Automazioni",
-    "description": "Programmazione PLC, quadri elettrici, impianti industriali, diagnostica e revamping a Gioia Tauro, Reggio Calabria e in tutta la Calabria."
+    "title": "Automazione e impianti completi su misura | Reitano",
+    "description": "Automazione, quadri elettrici e sviluppo di macchine e impianti completi su misura, con coordinamento di partner tecnici specializzati."
   },
   "brand": {
     "name": "Reitano Automazioni Industriali & Service",
     "shortName": "REITANO",
     "tagline": "Impianti elettrici, PLC & automazione industriale",
-    "description": "Programmazione PLC, impianti elettrici, quadri elettrici, automazione industriale e rifacimenti completi. Professionalità e competenza al tuo servizio.",
+    "description": "Automazione, quadri elettrici e integrazione di macchine e impianti completi su misura, anche con partner tecnici specializzati.",
     "logoUrl": "/logo-brand.png"
   },
   "contact": {
@@ -32,22 +32,22 @@
     "whatsappIconUrl": "/whatsapp.svg"
   },
   "hero": {
-    "kicker": "Disponibile per interventi",
-    "title": "Automazione industriale, PLC e quadri elettrici in Calabria",
-    "subtitle": "Programmazione PLC, impianti elettrici, quadri elettrici, automazione industriale e rifacimenti completi. Soluzioni ordinate, sicure e pensate per far lavorare meglio il tuo impianto.",
-    "primaryCta": "Richiedi Preventivo",
+    "kicker": "Dall’esigenza all’impianto funzionante",
+    "title": "Automazione, quadri elettrici e impianti completi su misura",
+    "subtitle": "Seguiamo progettazione elettrica, automazione e integrazione di macchine e impianti, coordinando quando necessario partner tecnici specializzati.",
+    "primaryCta": "Parlaci del tuo impianto",
     "secondaryCta": "Chiama ora"
   },
   "sections": {
     "servicesKicker": "Servizi",
     "servicesTitle": "Cosa facciamo",
-    "servicesText": "Dalla programmazione PLC alla realizzazione di quadri elettrici: un supporto completo per impianti e macchine industriali.",
+    "servicesText": "Servizi specialistici singoli oppure integrati nello sviluppo di una macchina o di un impianto completo.",
     "aboutKicker": "Chi siamo",
     "aboutTitle": "Tecnica sul campo e continuità per le imprese",
     "aboutText": "Reitano Automazioni nasce dall’esperienza diretta su macchine e impianti industriali, per aiutare le aziende a recuperare ciò che esiste, ridurre l’imprevedibilità e introdurre miglioramenti graduali.",
     "processKicker": "Processo",
     "processTitle": "Come lavoriamo",
-    "processText": "Un metodo semplice: ascolto, sopralluogo, preventivo e realizzazione con test finale.",
+    "processText": "Analisi, progettazione, coordinamento tecnico, realizzazione e collaudo con responsabilità definite.",
     "worksKicker": "Lavori realizzati",
     "worksTitle": "Casi studio dal campo",
     "worksText": "Una selezione di interventi reali su quadri, macchine e impianti industriali. Le fotografie documentano lavorazioni effettivamente eseguite.",
@@ -60,7 +60,7 @@
     "contactKicker": "Contatti",
     "contactTitle": "Parliamone",
     "contactText": "Per assistenza, sopralluoghi, modifiche o nuovi quadri puoi scrivere dal form, chiamare o usare WhatsApp.",
-    "order": "servizi,chi-siamo,metodo,lavori,recensioni,contatti"
+    "order": "soluzioni-complete,servizi,chi-siamo,metodo,lavori,recensioni,contatti"
   },
   "stats": [
     {

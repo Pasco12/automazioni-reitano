@@ -147,6 +147,8 @@
       data.get('phone') ? `Telefono: ${data.get('phone')}` : '',
       data.get('email') ? `Email: ${data.get('email')}` : '',
       data.get('service') ? `Servizio: ${data.get('service')}` : '',
+      data.get('requestType') ? `Tipo richiesta: ${data.get('requestType')}` : '',
+      data.get('sector') ? `Settore: ${data.get('sector')}` : '',
       data.get('location') ? `Zona: ${data.get('location')}` : '',
       data.get('timeframe') ? `Urgenza: ${data.get('timeframe')}` : '',
       data.get('preferredContact') ? `Contatto preferito: ${data.get('preferredContact')}` : '',
@@ -186,10 +188,12 @@
     const target = $('#services-list');
     $$('[data-service-select]').forEach((select) => {
       const current = select.value;
-      select.innerHTML = '<option value="">Seleziona un servizio</option>' + services.map((service) => (
+      const integratedOptions = '<option value="Impianto completo su misura">Impianto completo su misura</option><option value="Automazione per costruttori di macchine">Automazione per costruttori di macchine</option>';
+      select.innerHTML = '<option value="">Seleziona un servizio</option>' + integratedOptions + services.map((service) => (
         `<option value="${escapeAttr(service.title)}">${escapeHtml(service.title)}</option>`
       )).join('');
-      select.value = current;
+      const requested = new URLSearchParams(window.location.search).get('servizio');
+      select.value = current || requested || '';
     });
 
     if (!target) return;
