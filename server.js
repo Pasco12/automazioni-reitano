@@ -2199,6 +2199,8 @@ app.get('/sitemap.xml', async (req, res) => {
     { loc: 'https://www.automazionireitano.it/servizi/automazione-industriale', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/progettazione-schemi-elettrici', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/automazione-industriale-reggio-calabria', priority: '0.8', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/automazione-agricoltura', priority: '0.8', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/industria-4-0-5-0', priority: '0.8', changefreq: 'monthly' },
     ...projects.map((project) => ({
       loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
       priority: '0.7',
@@ -2261,6 +2263,14 @@ app.get('/servizi/progettazione-schemi-elettrici', (req, res) => {
 
 app.get('/automazione-industriale-reggio-calabria', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'automazione-industriale-reggio-calabria.html'));
+});
+
+app.get('/automazione-agricoltura', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'automazione-agricoltura.html'));
+});
+
+app.get('/industria-4-0-5-0', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'industria-4-0-5-0.html'));
 });
 
 app.get('/lavori', (req, res) => {
