@@ -142,6 +142,17 @@
         "Reti industriali",
         "Integrazione sistemi"
       ]
+    },
+    {
+      "icon": "engineering",
+      "title": "Progettazione Schemi Elettrici",
+      "description": "Sviluppo di schemi elettrici industriali chiari e ordinati per quadri, macchine e sistemi di automazione.",
+      "bullets": [
+        "Potenza e comando",
+        "PLC, I/O e inverter",
+        "Morsettiere e numerazione",
+        "Distinta componenti"
+      ]
     }
   ],
   "projects": [
