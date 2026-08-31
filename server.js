@@ -2197,6 +2197,7 @@ app.get('/sitemap.xml', async (req, res) => {
     { loc: 'https://www.automazionireitano.it/servizi/rifacimenti-revamping', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/diagnostica-riparazioni', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/servizi/automazione-industriale', priority: '0.8', changefreq: 'monthly' },
+    { loc: 'https://www.automazionireitano.it/servizi/progettazione-schemi-elettrici', priority: '0.8', changefreq: 'monthly' },
     { loc: 'https://www.automazionireitano.it/automazione-industriale-reggio-calabria', priority: '0.8', changefreq: 'monthly' },
     ...projects.map((project) => ({
       loc: `https://www.automazionireitano.it/lavori/${encodeURIComponent(projectSlug(project))}`,
@@ -2252,6 +2253,10 @@ app.get('/servizi/diagnostica-riparazioni', (req, res) => {
 
 app.get('/servizi/automazione-industriale', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'servizio-automazione-industriale.html'));
+});
+
+app.get('/servizi/progettazione-schemi-elettrici', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'servizio-progettazione-schemi-elettrici.html'));
 });
 
 app.get('/automazione-industriale-reggio-calabria', (req, res) => {
