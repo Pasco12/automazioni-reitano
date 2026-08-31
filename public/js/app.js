@@ -198,16 +198,18 @@
 
     if (!target) return;
     const serviceLinks = {
-      0: '/servizi/programmazione-plc',
-      1: '/servizi/impianti-elettrici-industriali',
-      2: '/servizi/quadri-elettrici',
-      3: '/servizi/rifacimenti-revamping',
-      4: '/servizi/diagnostica-riparazioni',
-      5: '/servizi/automazione-industriale',
-      6: '/servizi/progettazione-schemi-elettrici'
+      'programmazione plc': '/servizi/programmazione-plc',
+      'impianti elettrici': '/servizi/impianti-elettrici-industriali',
+      'quadri elettrici': '/servizi/quadri-elettrici',
+      'rifacimenti e revamping': '/servizi/rifacimenti-revamping',
+      'diagnostica e riparazioni': '/servizi/diagnostica-riparazioni',
+      'automazione industriale': '/servizi/automazione-industriale',
+      'progettazione schemi elettrici': '/servizi/progettazione-schemi-elettrici'
     };
 
-    target.innerHTML = services.map((service, index) => `
+    target.innerHTML = services.map((service) => {
+      const serviceLink = serviceLinks[String(service.title || '').trim().toLowerCase()];
+      return `
       <article class="service-card reveal">
         <div class="service-icon" aria-hidden="true">${iconSvg(service.icon)}</div>
         <h3>${escapeHtml(service.title)}</h3>
@@ -215,9 +217,10 @@
         <ul class="clean-list">
           ${(service.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}
         </ul>
-        ${['home', 'services'].includes(document.body.dataset.page) && serviceLinks[index] ? `<a class="service-card-link" href="${serviceLinks[index]}">Approfondisci il servizio</a>` : ''}
+        ${['home', 'services'].includes(document.body.dataset.page) && serviceLink ? `<a class="service-card-link" href="${serviceLink}">Approfondisci il servizio</a>` : ''}
       </article>
-    `).join('');
+    `;
+    }).join('');
 
   }
 
