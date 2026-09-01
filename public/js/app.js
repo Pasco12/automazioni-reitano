@@ -74,6 +74,8 @@
       repair: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5 5L4 17l3 3 5.7-5.7a4 4 0 0 0 5-5l-2.8 2.8-3-3 2.8-2.8Z"/></svg>',
       automation: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h4v4H4zM16 4h4v4h-4zM16 16h4v4h-4z"/><path d="M8 10h4a4 4 0 0 0 4-4M8 10h4a4 4 0 0 1 4 4v2"/></svg>',
       engineering: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16 17 6l3 3-10 10H7v-3Z"/><path d="M14 9l3 3"/></svg>',
+      agriculture: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9"/><path d="M12 13c-4 0-7-2-8-6 4 0 7 2 8 6Z"/><path d="M12 17c4 0 7-2 8-6-4 0-7 2-8 6Z"/><path d="M5 21h14"/></svg>',
+      industry: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l6 3V8l6 4V5l6 4v12Z"/><path d="M7 17h2M12 17h2M17 17h2"/></svg>',
       service: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5 5L4 17l3 3 5.7-5.7a4 4 0 0 0 5-5l-2.8 2.8-3-3 2.8-2.8Z"/></svg>'
     };
     return icons[key] || icons.automation;
@@ -204,7 +206,9 @@
       'rifacimenti e revamping': '/servizi/rifacimenti-revamping',
       'diagnostica e riparazioni': '/servizi/diagnostica-riparazioni',
       'automazione industriale': '/servizi/automazione-industriale',
-      'progettazione schemi elettrici': '/servizi/progettazione-schemi-elettrici'
+      'progettazione schemi elettrici': '/servizi/progettazione-schemi-elettrici',
+      'automazione in agricoltura': '/automazione-agricoltura',
+      'industria 4.0 e 5.0': '/industria-4-0-5-0'
     };
 
     target.innerHTML = services.map((service) => {
