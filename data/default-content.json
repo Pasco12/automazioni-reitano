@@ -157,6 +157,7 @@
     {
       "icon": "agriculture",
       "title": "Automazione in Agricoltura",
+      "url": "/automazione-agricoltura",
       "description": "Sistemi di controllo per irrigazione, serre, fertirrigazione e coltivazioni idroponiche.",
       "bullets": [
         "Sensori di umidità e temperatura",
@@ -168,6 +169,7 @@
     {
       "icon": "industry",
       "title": "Industria 4.0 e 5.0",
+      "url": "/industria-4-0-5-0",
       "description": "Connessione, acquisizione dati e aggiornamento di macchine e impianti verso sistemi più misurabili e manutenibili.",
       "bullets": [
         "Interconnessione e raccolta dati",

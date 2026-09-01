@@ -212,7 +212,8 @@
     };
 
     target.innerHTML = services.map((service) => {
-      const serviceLink = serviceLinks[String(service.title || '').trim().toLowerCase()];
+      const serviceLink = String(service.url || '').trim()
+        || serviceLinks[String(service.title || '').trim().toLowerCase()];
       return `
       <article class="service-card reveal">
         <div class="service-icon" aria-hidden="true">${iconSvg(service.icon)}</div>
