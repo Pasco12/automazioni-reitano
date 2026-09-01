@@ -153,6 +153,28 @@
         "Morsettiere e numerazione",
         "Distinta componenti"
       ]
+    },
+    {
+      "icon": "agriculture",
+      "title": "Automazione in Agricoltura",
+      "description": "Sistemi di controllo per irrigazione, serre, fertirrigazione e coltivazioni idroponiche.",
+      "bullets": [
+        "Sensori di umidità e temperatura",
+        "Pompe ed elettrovalvole",
+        "Serre e fertirrigazione",
+        "Monitoraggio e allarmi"
+      ]
+    },
+    {
+      "icon": "industry",
+      "title": "Industria 4.0 e 5.0",
+      "description": "Connessione, acquisizione dati e aggiornamento di macchine e impianti verso sistemi più misurabili e manutenibili.",
+      "bullets": [
+        "Interconnessione e raccolta dati",
+        "Tracciabilità e diagnostica",
+        "Revamping di sistemi esistenti",
+        "Tecnologia al servizio delle persone"
+      ]
     }
   ],
   "projects": [
