@@ -32,10 +32,10 @@
     "whatsappIconUrl": "/whatsapp.svg"
   },
   "hero": {
-    "kicker": "Dall’esigenza all’impianto funzionante",
+    "kicker": "Tecnica diretta, soluzioni coordinate",
     "title": "Automazione, quadri elettrici e impianti completi su misura",
-    "subtitle": "Seguiamo progettazione elettrica, automazione e integrazione di macchine e impianti, coordinando quando necessario partner tecnici specializzati.",
-    "primaryCta": "Parlaci del tuo impianto",
+    "subtitle": "Partiamo dalla macchina e dal risultato che vuoi ottenere. Sviluppiamo la parte elettrica e di automazione e coordiniamo gli specialisti necessari con ruoli chiari.",
+    "primaryCta": "Descrivi macchina o impianto",
     "secondaryCta": "Chiama ora"
   },
   "sections": {
@@ -43,8 +43,8 @@
     "servicesTitle": "Cosa facciamo",
     "servicesText": "Servizi specialistici singoli oppure integrati nello sviluppo di una macchina o di un impianto completo.",
     "aboutKicker": "Chi siamo",
-    "aboutTitle": "Tecnica sul campo e continuità per le imprese",
-    "aboutText": "Reitano Automazioni nasce dall’esperienza diretta su macchine e impianti industriali, per aiutare le aziende a recuperare ciò che esiste, ridurre l’imprevedibilità e introdurre miglioramenti graduali.",
+    "aboutTitle": "Un’impresa giovane, un metodo costruito sul campo",
+    "aboutText": "Reitano Automazioni nasce dal percorso tecnico di Pasquale Reitano per offrire alle aziende un rapporto diretto: capire il sistema esistente, proporre interventi proporzionati e lasciare soluzioni comprensibili nel tempo.",
     "processKicker": "Processo",
     "processTitle": "Come lavoriamo",
     "processText": "Analisi, progettazione, coordinamento tecnico, realizzazione e collaudo con responsabilità definite.",
@@ -60,7 +60,7 @@
     "contactKicker": "Contatti",
     "contactTitle": "Parliamone",
     "contactText": "Per assistenza, sopralluoghi, modifiche o nuovi quadri puoi scrivere dal form, chiamare o usare WhatsApp.",
-    "order": "soluzioni-complete,servizi,chi-siamo,metodo,lavori,recensioni,contatti"
+    "order": "soluzioni-complete,servizi,chi-siamo,approfondimenti,metodo,lavori,recensioni,contatti"
   },
   "stats": [
     {
