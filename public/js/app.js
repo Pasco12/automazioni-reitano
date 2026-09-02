@@ -211,7 +211,7 @@
       'industria 4.0 e 5.0': '/industria-4-0-5-0'
     };
 
-    target.innerHTML = services.map((service) => {
+    const renderServiceCard = (service) => {
       const serviceLink = String(service.url || '').trim()
         || serviceLinks[String(service.title || '').trim().toLowerCase()];
       return `
@@ -225,7 +225,46 @@
         ${['home', 'services'].includes(document.body.dataset.page) && serviceLink ? `<a class="service-card-link" href="${serviceLink}">Approfondisci il servizio</a>` : ''}
       </article>
     `;
-    }).join('');
+    };
+
+    if (document.body.dataset.page === 'services') {
+      const serviceGroups = [
+        {
+          id: 'sviluppo-realizzazione',
+          kicker: 'Sviluppo e realizzazione',
+          title: 'Per costruire o completare macchina e impianto',
+          description: 'Progettazione, quadro, controllo e collegamenti coordinati attorno al funzionamento richiesto.',
+          services: ['programmazione plc', 'impianti elettrici', 'quadri elettrici', 'automazione industriale', 'progettazione schemi elettrici']
+        },
+        {
+          id: 'assistenza-modernizzazione',
+          kicker: 'Assistenza e modernizzazione',
+          title: 'Per risolvere problemi e recuperare sistemi esistenti',
+          description: 'Diagnosi, ripristino e aggiornamento proporzionato allo stato reale della macchina.',
+          services: ['rifacimenti e revamping', 'diagnostica e riparazioni']
+        },
+        {
+          id: 'applicazioni-innovazione',
+          kicker: 'Applicazioni e innovazione',
+          title: 'Per introdurre controllo, dati e nuove possibilità',
+          description: 'Approfondimenti e soluzioni dedicate ad agricoltura automatizzata e sistemi industriali connessi.',
+          services: ['automazione in agricoltura', 'industria 4.0 e 5.0']
+        }
+      ];
+      const byTitle = new Map(services.map((service) => [String(service.title || '').trim().toLowerCase(), service]));
+      target.className = 'service-category-list';
+      target.innerHTML = serviceGroups.map((group) => {
+        const groupServices = group.services.map((title) => byTitle.get(title)).filter(Boolean);
+        if (!groupServices.length) return '';
+        return `<section class="service-category" id="${group.id}">
+          <div class="service-category-head reveal"><p class="section-kicker">${group.kicker}</p><h2>${group.title}</h2><p>${group.description}</p></div>
+          <div class="services-grid">${groupServices.map(renderServiceCard).join('')}</div>
+        </section>`;
+      }).join('');
+      return;
+    }
+
+    target.innerHTML = services.map(renderServiceCard).join('');
 
   }
 
