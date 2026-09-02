@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 3000;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'cambia-subito';
 const ADMIN_SECRET = process.env.ADMIN_SECRET || 'reitano-local-secret';
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
+const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-5.6-luna';
 
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, 'public');
@@ -631,6 +633,118 @@ function cleanText(value, max = 1800) {
   return String(value || '').trim().slice(0, max);
 }
 
+function cleanTechnicalText(value, max) {
+  return cleanText(value, max)
+    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, '[email rimossa]')
+    .replace(/(?:\+?\d[\s().-]*){8,}/g, '[telefono rimosso]');
+}
+
+function cleanProjectConfiguration(value = {}) {
+  const project = value && typeof value === 'object' ? value : {};
+  return {
+    projectType: cleanText(project.projectType, 80),
+    sector: cleanTechnicalText(project.sector, 120),
+    projectStage: cleanText(project.projectStage, 100),
+    location: cleanTechnicalText(project.location, 140),
+    supply: cleanText(project.supply, 100),
+    knownPower: cleanText(project.knownPower, 100),
+    loads: cleanTechnicalText(project.loads, 1200),
+    environment: cleanTechnicalText(project.environment, 500),
+    plc: cleanText(project.plc, 120),
+    hmi: cleanText(project.hmi, 120),
+    connectivity: cleanTechnicalText(project.connectivity, 240),
+    functions: cleanTechnicalText(project.functions, 1400),
+    description: cleanTechnicalText(project.description, 2200),
+    timeframe: cleanText(project.timeframe, 100)
+  };
+}
+
+function guidedProjectAnalysis(project) {
+  const missing = [];
+  if (!project.projectType) missing.push('Tipologia del progetto');
+  if (!project.description) missing.push('Descrizione del processo o del risultato atteso');
+  if (!project.supply) missing.push('Alimentazione disponibile o da verificare');
+  if (!project.loads) missing.push('Elenco indicativo di motori, utenze e attuatori');
+  if (!project.location) missing.push('Luogo di installazione');
+
+  const questions = missing.slice(0, 3).map((item) => `Puoi precisare: ${item.toLowerCase()}?`);
+  const recommendations = [
+    'Preparare fotografie, targhe dei componenti e schemi eventualmente disponibili.',
+    project.projectStage === 'esistente'
+      ? 'Confrontare la documentazione disponibile con il cablaggio e la macchina reali.'
+      : 'Definire prima le funzioni e le interfacce, poi consolidare componenti e collegamenti.',
+    project.plc === 'si' || project.hmi === 'si'
+      ? 'Concordare modalità manuali, automatiche, allarmi e informazioni utili all’operatore.'
+      : 'Valutare il livello di controllo necessario in base al numero di segnali e alle sequenze.'
+  ];
+
+  return {
+    summary: project.description || 'Configurazione preliminare da completare con i dati tecnici mancanti.',
+    missingInformation: missing,
+    questions,
+    recommendations,
+    warnings: [
+      'Il riepilogo è preliminare e non costituisce progetto, dimensionamento o dichiarazione di conformità.',
+      'Protezioni, sezioni, sicurezza e componenti devono essere verificati sul sistema reale.'
+    ]
+  };
+}
+
+function responseOutputText(payload) {
+  if (typeof payload?.output_text === 'string') return payload.output_text;
+  for (const item of Array.isArray(payload?.output) ? payload.output : []) {
+    for (const content of Array.isArray(item?.content) ? item.content : []) {
+      if (content?.type === 'output_text' && typeof content.text === 'string') return content.text;
+    }
+  }
+  return '';
+}
+
+async function aiProjectAnalysis(project) {
+  if (!OPENAI_API_KEY) return { mode: 'guided', analysis: guidedProjectAnalysis(project) };
+
+  const schema = {
+    type: 'object',
+    additionalProperties: false,
+    required: ['summary', 'missingInformation', 'questions', 'recommendations', 'warnings'],
+    properties: {
+      summary: { type: 'string' },
+      missingInformation: { type: 'array', items: { type: 'string' }, maxItems: 8 },
+      questions: { type: 'array', items: { type: 'string' }, maxItems: 3 },
+      recommendations: { type: 'array', items: { type: 'string' }, maxItems: 6 },
+      warnings: { type: 'array', items: { type: 'string' }, maxItems: 4 }
+    }
+  };
+
+  const response = await fetch('https://api.openai.com/v1/responses', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${OPENAI_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: OPENAI_MODEL,
+      store: false,
+      instructions: [
+        'Sei l’assistente preliminare di Reitano Automazioni Industriali & Service.',
+        'Analizza soltanto requisiti funzionali e informazioni mancanti.',
+        'Non eseguire dimensionamenti, non scegliere protezioni o sezioni, non dichiarare conformità e non presentare il risultato come progetto esecutivo.',
+        'Non inventare dati. Formula al massimo tre domande brevi e concrete.',
+        'Rispondi in italiano professionale e comprensibile.'
+      ].join(' '),
+      input: `Configurazione tecnica preliminare:\n${JSON.stringify(project, null, 2)}`,
+      text: { format: { type: 'json_schema', name: 'project_assistance', strict: true, schema } }
+    }),
+    signal: AbortSignal.timeout(20_000)
+  });
+
+  if (!response.ok) throw new Error(`OpenAI API ${response.status}`);
+  const payload = await response.json();
+  const output = responseOutputText(payload);
+  if (!output) throw new Error('Risposta IA vuota');
+  return { mode: 'ai', analysis: JSON.parse(output) };
+}
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -661,6 +775,8 @@ function buildWhatsAppUrl(content, lead) {
     lead.company ? `Azienda: ${lead.company}` : '',
     lead.phone ? `Telefono: ${lead.phone}` : '',
     lead.email ? `Email: ${lead.email}` : '',
+    lead.requestType ? `Tipo richiesta: ${lead.requestType}` : '',
+    lead.sector ? `Settore: ${lead.sector}` : '',
     lead.service ? `Servizio: ${lead.service}` : '',
     lead.location ? `Zona: ${lead.location}` : '',
     lead.timeframe ? `Urgenza: ${lead.timeframe}` : '',
@@ -688,11 +804,13 @@ function smtpTransport() {
 
 function leadRows(lead) {
   return [
-    ['Tipo richiesta', lead.type === 'quote' ? 'Preventivo' : 'Contatto'],
+    ['Tipo richiesta', lead.type === 'quote' ? 'Preventivo' : (lead.type === 'configurator' ? 'Configuratore guidato' : 'Contatto')],
     ['Nome', lead.name],
     ['Azienda', lead.company],
     ['Telefono', lead.phone],
     ['Email', lead.email],
+    ['Percorso', lead.requestType],
+    ['Settore', lead.sector],
     ['Servizio', lead.service],
     ['Zona intervento', lead.location],
     ['Urgenza', lead.timeframe],
@@ -739,7 +857,7 @@ async function sendLeadEmail(lead, content) {
   }
 
   const from = process.env.MAIL_FROM || process.env.SMTP_USER || content?.contact?.email || to;
-  const subjectPrefix = lead.type === 'quote' ? 'Nuovo preventivo' : 'Nuovo contatto';
+  const subjectPrefix = lead.type === 'quote' ? 'Nuovo preventivo' : (lead.type === 'configurator' ? 'Nuova configurazione guidata' : 'Nuovo contatto');
 
   await transporter.sendMail({
     from,
@@ -931,6 +1049,22 @@ app.get('/api/reviews', async (req, res) => {
   res.json({ ok: true, reviews: reviews.filter((review) => review.status === 'approved') });
 });
 
+app.post('/api/configurator/assist', rateLimit({ windowMs: 10 * 60 * 1000, max: 12 }), async (req, res) => {
+  const project = cleanProjectConfiguration(req.body?.project);
+  try {
+    const result = await aiProjectAnalysis(project);
+    res.json({ ok: true, ...result });
+  } catch (error) {
+    console.error('Errore assistente configuratore:', error.message);
+    res.json({
+      ok: true,
+      mode: 'guided',
+      notice: 'L’analisi IA non è disponibile in questo momento. Il riepilogo guidato resta utilizzabile.',
+      analysis: guidedProjectAnalysis(project)
+    });
+  }
+});
+
 app.post('/api/leads', async (req, res) => {
   try {
     if (req.body.website) {
@@ -945,6 +1079,8 @@ app.post('/api/leads', async (req, res) => {
       company: cleanText(req.body.company, 160),
       phone: cleanText(req.body.phone, 80),
       email: cleanText(req.body.email, 160),
+      requestType: cleanText(req.body.requestType, 120),
+      sector: cleanText(req.body.sector, 120),
       service: cleanText(req.body.service, 160),
       location: cleanText(req.body.location, 160),
       timeframe: cleanText(req.body.timeframe, 80),
@@ -957,6 +1093,9 @@ app.post('/api/leads', async (req, res) => {
 
     if (!lead.name || (!lead.phone && !lead.email) || !lead.message) {
       return res.status(400).json({ ok: false, error: 'Inserisci nome, almeno un contatto e un messaggio.' });
+    }
+    if (!lead.privacy) {
+      return res.status(400).json({ ok: false, error: 'Accetta la Privacy Policy per inviare la richiesta.' });
     }
 
     const leads = await readJson(LEADS_FILE, []);
@@ -2229,6 +2368,10 @@ app.get('/contatti', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'contatti.html'));
 });
 
+app.get('/configuratore', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'configuratore.html'));
+});
+
 app.get('/chi-siamo', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'chi-siamo.html'));
 });
@@ -2326,4 +2469,5 @@ app.listen(PORT, () => {
   console.log(`Gestionale admin: http://localhost:${PORT}/admin-app`);
   console.log(`Password admin: ${ADMIN_PASSWORD === 'cambia-subito' ? 'password predefinita attiva (cambiala da /admin > Sicurezza)' : 'impostata'}`);
   console.log(`Email form: ${process.env.SMTP_HOST ? 'SMTP configurato' : 'SMTP non configurato - richieste salvate solo in admin'}`);
+  console.log(`Assistente IA: ${OPENAI_API_KEY ? `attivo (${OPENAI_MODEL})` : 'non configurato - modalità guidata attiva'}`);
 });
