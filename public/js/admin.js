@@ -593,6 +593,8 @@
         const date = lead.createdAt ? new Date(lead.createdAt).toLocaleString('it-IT') : '';
         const detailBadges = [
           ['Azienda', lead.company],
+          ['Percorso', lead.requestType],
+          ['Settore', lead.sector],
           ['Servizio', lead.service],
           ['Zona', lead.location],
           ['Urgenza', lead.timeframe],
@@ -604,7 +606,7 @@
           <article class="lead-card">
             <header>
               <h3>${escapeHtml(lead.name || 'Senza nome')}</h3>
-              <span class="badge">${escapeHtml(lead.type === 'quote' ? 'Preventivo' : 'Contatto')}</span>
+              <span class="badge">${escapeHtml(lead.type === 'quote' ? 'Preventivo' : (lead.type === 'configurator' ? 'Configuratore' : 'Contatto'))}</span>
             </header>
             <div class="lead-meta">
               ${date ? `<span class="badge">${escapeHtml(date)}</span>` : ''}

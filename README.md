@@ -103,6 +103,23 @@ Senza SMTP il sito funziona comunque: salva le richieste nel pannello admin e ge
 
 ---
 
+## Configuratore guidato e assistente IA
+
+La pagina `/configuratore` funziona sempre come percorso guidato. Per attivare anche l’analisi IA configura nel file `.env`:
+
+```env
+OPENAI_API_KEY=sk-...
+OPENAI_MODEL=gpt-5.6-luna
+```
+
+La chiave deve restare esclusivamente sul server e non deve essere inserita nei file JavaScript pubblici. Se la chiave manca o l’API non risponde, il sistema genera un riepilogo guidato locale e consente comunque l’invio della richiesta.
+
+L’assistente riceve soltanto i campi tecnici del progetto. Nome, telefono ed email vengono raccolti separatamente per il ricontatto e non sono inclusi nella chiamata al modello.
+
+Documentazione ufficiale di riferimento: [Structured model outputs](https://developers.openai.com/api/docs/guides/structured-outputs) e [Data controls](https://developers.openai.com/api/docs/guides/your-data).
+
+---
+
 ## 4) Modificare il sito dal pannello admin
 
 Vai su:

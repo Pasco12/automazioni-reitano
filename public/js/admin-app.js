@@ -174,10 +174,10 @@
       <article class="item" data-lead-id="${esc(lead.id)}">
         <div class="item-row">
           <div><h3>${esc(lead.name || 'Senza nome')}</h3><p>${esc(lead.company || 'Privato')} · ${esc(lead.email || '')} · ${esc(lead.phone || '')}</p></div>
-          <span class="badge ${converted ? 'status-completed' : 'status-requested'}">${converted ? 'Convertita' : (lead.type === 'quote' ? 'Preventivo' : 'Contatto')}</span>
+          <span class="badge ${converted ? 'status-completed' : 'status-requested'}">${converted ? 'Convertita' : (lead.type === 'quote' ? 'Preventivo' : (lead.type === 'configurator' ? 'Configuratore' : 'Contatto'))}</span>
         </div>
         <p>${esc(lead.message || '')}</p>
-        <div class="badges"><span class="badge">${esc(lead.service || 'Servizio non indicato')}</span><span class="badge">${esc(lead.location || 'Zona non indicata')}</span><span class="badge">${date(lead.createdAt)}</span></div>
+        <div class="badges"><span class="badge">${esc(lead.service || 'Servizio non indicato')}</span>${lead.sector ? `<span class="badge">${esc(lead.sector)}</span>` : ''}<span class="badge">${esc(lead.location || 'Zona non indicata')}</span><span class="badge">${date(lead.createdAt)}</span></div>
         <div class="actions">
           <button class="btn small" data-lead-convert="${esc(lead.id)}" ${converted ? 'disabled' : ''} type="button">Converti in cliente + intervento</button>
           <button class="btn soft small" data-lead-archive="${esc(lead.id)}" ${converted ? 'disabled' : ''} type="button">Archivia</button>
