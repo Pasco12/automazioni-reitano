@@ -107,12 +107,7 @@
   }
 
   function trackEvent(name, params = {}) {
-    if (!window.reitanoCookieConsent?.marketing || typeof window.gtag !== 'function') return;
-    window.gtag('event', name, {
-      page_location: window.location.href,
-      page_path: window.location.pathname,
-      ...params
-    });
+    window.reitanoTrackEvent?.(name, params);
   }
 
   function applyTheme() {
@@ -573,7 +568,7 @@
       const hrefValue = link.getAttribute('href') || '';
       if (hrefValue.startsWith('tel:')) trackEvent('phone_click', { link_location: link.id || link.className || 'page' });
       else if (hrefValue.startsWith('mailto:')) trackEvent('email_click', { link_location: link.id || link.className || 'page' });
-      else if (hrefValue.includes('wa.me/')) trackEvent('whatsapp_click', { link_location: link.id || link.className || 'page' });
+      else if (/^https:\/\/(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//i.test(hrefValue)) trackEvent('whatsapp_click', { link_location: link.id || link.className || 'page' });
     });
   }
 

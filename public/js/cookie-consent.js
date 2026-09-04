@@ -3,6 +3,26 @@
   const VERSION = '1.0';
   const GA_ID = 'G-8Y44XGZWPC';
   let analyticsLoaded = false;
+  const INTERNAL_KEY = 'reitano_internal_traffic';
+  function isInternalTraffic() {
+    try { return localStorage.getItem(INTERNAL_KEY) === '1'; } catch { return false; }
+  }
+
+  window.reitanoTrackEvent = (name, params = {}) => {
+    if (!window.reitanoCookieConsent?.marketing || isInternalTraffic() || typeof window.gtag !== 'function') return;
+    window.gtag('event', name, {
+      ...params,
+      page_location: window.location.origin + window.location.pathname,
+      page_path: window.location.pathname
+    });
+  };
+
+  // Opt-in locale e reversibile: non esclude IP condivisi o altri browser.
+  window.reitanoSetInternalTraffic = (enabled) => {
+    try { localStorage.setItem(INTERNAL_KEY, enabled ? '1' : '0'); } catch { return false; }
+    apply(window.reitanoCookieConsent);
+    return true;
+  };
 
   function getCookie(name) {
     return document.cookie.split('; ').find((row) => row.startsWith(`${name}=`))?.split('=')[1] || '';
@@ -25,7 +45,12 @@
 
   function apply(consent) {
     window.reitanoCookieConsent = consent;
-    if (consent?.marketing) loadAnalytics();
+    const allowed = Boolean(consent?.marketing) && !isInternalTraffic();
+    window[`ga-disable-${GA_ID}`] = !allowed;
+    if (analyticsLoaded && typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: allowed ? 'granted' : 'denied' });
+    }
+    if (allowed) loadAnalytics();
     window.dispatchEvent(new CustomEvent('reitano:cookie-consent', { detail: consent }));
   }
 

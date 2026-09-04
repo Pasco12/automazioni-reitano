@@ -135,7 +135,7 @@
       result.className = 'form-result ok';
       result.innerHTML = `Configurazione inviata. La esamineremo prima di ricontattarti.${data.whatsappUrl ? ` <a href="${escapeHtml(data.whatsappUrl)}" target="_blank" rel="noopener">Apri anche WhatsApp</a>.` : ''}`;
       submit.hidden = true;
-      window.dataLayer?.push({ event: 'generate_lead', form_name: 'guided_configurator', service: value('projectType'), lead_type: 'configurator' });
+      window.reitanoTrackEvent?.('generate_lead', { form_name: 'guided_configurator', service: value('projectType'), lead_type: 'configurator' });
     } catch (error) {
       result.className = 'form-result error';
       result.textContent = error.message || 'Errore durante l’invio. Puoi usare i contatti tradizionali.';

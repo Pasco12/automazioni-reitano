@@ -2447,7 +2447,7 @@ app.use(express.static(PUBLIC_DIR, {
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       return;
     }
-    if (normalizedPath.endsWith('/js/app.js') || normalizedPath.endsWith('/css/style.css')) {
+    if (normalizedPath.endsWith('/js/app.js') || normalizedPath.endsWith('/js/cookie-consent.js') || normalizedPath.endsWith('/js/configurator.js') || normalizedPath.endsWith('/css/style.css')) {
       res.setHeader('Cache-Control', 'no-cache, must-revalidate');
       return;
     }
