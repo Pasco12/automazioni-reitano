@@ -681,6 +681,36 @@ input, textarea, select {
 }
 
 /* Footer utility links */
+.crawl-link-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface-bg);
+}
+.crawl-link-panel strong {
+  flex-basis: 100%;
+  text-align: center;
+  color: var(--heading-color);
+}
+.crawl-link-panel a {
+  color: var(--muted);
+  font-weight: 800;
+  font-size: calc(var(--base-font-size) - 2px);
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.crawl-link-panel a:hover {
+  color: var(--heading-color);
+  border-color: var(--line-strong);
+}
+
 .footer-links {
   display: inline-flex;
   align-items: center;
