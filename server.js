@@ -2346,8 +2346,18 @@ app.get('/sitemap.xml', async (req, res) => {
       changefreq: 'monthly'
     }))
   ];
-  const contentStat = await fsp.stat(CONTENT_FILE).catch(() => null);
-  const lastmod = (contentStat?.mtime || new Date()).toISOString().slice(0, 10);
+  const sitemapSources = [
+    CONTENT_FILE,
+    path.join(PUBLIC_DIR, 'index.html'),
+    path.join(PUBLIC_DIR, 'servizi.html'),
+    path.join(PUBLIC_DIR, 'lavori.html')
+  ];
+  const sitemapStats = await Promise.all(sitemapSources.map((file) => fsp.stat(file).catch(() => null)));
+  const latestMtime = sitemapStats.reduce((latest, stat) => {
+    if (!stat?.mtime || stat.mtime <= latest) return latest;
+    return stat.mtime;
+  }, new Date(0));
+  const lastmod = (latestMtime.getTime() ? latestMtime : new Date()).toISOString().slice(0, 10);
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${xmlEscape(url.loc)}</loc><lastmod>${lastmod}</lastmod><changefreq>${url.changefreq}</changefreq><priority>${url.priority}</priority></url>`).join('\n')}\n</urlset>\n`;
   res.type('application/xml').send(xml);
 });
